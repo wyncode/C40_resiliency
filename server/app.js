@@ -2,7 +2,9 @@ require('./db/config');
 const express = require('express'),
   path = require('path'),
   morgan = require('morgan');
-openRoutes = require('./routes/open');
+(openRoutes = require('./routes/open')),
+  (userRouts = require('./routes/secure/users')),
+  (taskRouter = require('./routes/secure/tasks'));
 
 const app = express();
 
