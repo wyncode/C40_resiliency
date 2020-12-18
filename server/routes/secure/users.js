@@ -1,20 +1,18 @@
-const router = require('express').Router();
-// ,
-//   {
-//     getCurrentUser,
-//     updateCurrentUser,
-//     logoutUser,
-//     logoutAllDevices,
-//     deleteUser,
-//     updatePassword,
-//     fetchAllUsers
-//   } = require('../../');
+const router = require('express').Router(),
+  {
+    updateCurrentUser,
+    logoutUser,
+    logoutAllDevices,
+    deleteUser,
+    uploadAvatar,
+    updatePassword
+  } = require('../../controllers/users');
 
-// router.get('/me', getCurrentUser);
-// router.patch('/me', updateCurrentUser);
-// router.post('/logout', logoutUser);
-// router.post('/logoutAll', logoutAllDevices);
-// router.delete('/', deleteUser);
-// router.put('/password', updatePassword);
+router.patch('/me', updateCurrentUser);
+router.post('/logout', logoutUser);
+router.post('/logoutAll', logoutAllDevices);
+router.delete('/', deleteUser);
+router.post('/avatar', uploadAvatar);
+router.put('/password', updatePassword);
 
 module.exports = router;
