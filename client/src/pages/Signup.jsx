@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const Login = ({ history }) => {
+const Signup = ({ history }) => {
   const [formData, setFormData] = useState(null);
 
   const { setCurrentUser } = useContext(AppContext);
@@ -13,12 +13,11 @@ const Login = ({ history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/users/login', formData);
-      setCurrentUser(response.data);
-      console.log(response.data);
+      const response = await axios.post('/api/users', formData);
+      setCurrentUser(response.data.user);
       sessionStorage.setItem('user', response.data);
       history.push('/');
     } catch (error) {
@@ -29,7 +28,17 @@ const Login = ({ history }) => {
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <h1>Task Manager</h1>
-      <Form style={{ width: 300 }} onSubmit={handleLogin}>
+      <Form style={{ width: 300 }} onSubmit={handleSignUp}>
+        <Form.Group>
+          <Form.Label htmlFor="fullName">Full Name</Form.Label>
+          <Form.Control
+            id="fullName"
+            type="text"
+            placeholder="Full Name"
+            name="name"
+            onChange={handleChange}
+          />
+        </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="email">Email Address</Form.Label>
           <Form.Control
@@ -54,11 +63,11 @@ const Login = ({ history }) => {
           <Button type="submit">Login</Button>
         </Form.Group>
       </Form>
-      <Link className="mt-4" to="/signup">
-        Need an account? Sign up.
+      <Link className="mt-4" to="/login">
+        Already have an account? Log in.
       </Link>
     </Container>
   );
 };
 
-export default Login;
+export default Signup;
