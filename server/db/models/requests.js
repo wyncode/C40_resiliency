@@ -10,7 +10,7 @@ const requestSchema = new mongoose.Schema({
     required: false
   },
   photo: {
-    type: Image,
+    type: String,
     required: false
   },
   resolution: {
@@ -18,5 +18,5 @@ const requestSchema = new mongoose.Schema({
     default: false
   }
 });
-const Request = mongoose.model('Request', userSchema);
+const Request = mongoose.model('Request', requestsSchema);
 module.exports = Request;

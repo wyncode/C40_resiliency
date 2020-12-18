@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
       trim: true
     },
     dob: {
-      type: String,
+      type: Date,
       required: true
     },
     email: {
@@ -90,8 +90,8 @@ const userSchema = new mongoose.Schema(
 /**
  * Create a virtual relation between User and task.
  */
-userSchema.virtual('tasks', {
-  ref: 'Task',
+userSchema.virtual('requests', {
+  ref: 'Request',
   localField: '_id',
   foreignField: 'owner'
 });
