@@ -5,7 +5,6 @@ const router = require('express').Router(),
     getAllRequests,
     getSpecificRequest,
     updateRequest,
-    deleteRequest,
     fetchAllRequests,
     deleteRequest
   } = require('../../controllers/requests');
