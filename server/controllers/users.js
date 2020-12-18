@@ -1,11 +1,11 @@
 const User = require('../db/models/user'),
   cloudinary = require('cloudinary').v2,
-  jwt = require('jsonwebtoken'),
-  {
-    sendWelcomeEmail,
-    sendCancellationEmail,
-    forgotPasswordEmail
-  } = require('../emails/');
+  jwt = require('jsonwebtoken');
+// {
+//   sendWelcomeEmail,
+//   sendCancellationEmail,
+//   forgotPasswordEmail
+// } = require('../emails/');
 
 /**
  * Create a user
@@ -123,28 +123,29 @@ exports.passwordRedirect = async (req, res) => {
   }
 
   //Authenticated routes
+};
 
-  /**
-   * @param {{updates}}
-   * Update a user
-   * @return {user}
-   */
-  exports.updateCurrentUser = async (req, res) => {
-    const updates = Object.keys(req.body);
-    const allowedUpdates = ['name', 'email', 'password', 'avatar'];
-    const isValidOperation = updates.every((update) =>
-      allowedUpdates.includes(update)
-    );
-    if (!isValidOperation)
-      return res.status(400).send({ error: 'invalid updates!' });
-    try {
-      updates.forEach((update) => (req.user[update] = req.body[update]));
-      await req.user.save();
-      res.json(req.user);
-    } catch (e) {
-      res.status(400).json({ error: e.toString() });
-    }
-  };
+/**
+ * @param {{updates}}
+ * Update a user
+ * @return {user}
+ */
+
+exports.updateCurrentUser = async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ['name', 'email', 'password', 'avatar'];
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  if (!isValidOperation)
+    return res.status(400).send({ error: 'invalid updates!' });
+  try {
+    updates.forEach((update) => (req.user[update] = req.body[update]));
+    await req.user.save();
+    res.json(req.user);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
+  }
 };
 
 /**
