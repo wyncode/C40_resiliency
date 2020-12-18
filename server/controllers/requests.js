@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-  Task = require('../db/models/request');
+  Request = require('../db/models/request');
 
 /**
  * Admin route fetchn all user
