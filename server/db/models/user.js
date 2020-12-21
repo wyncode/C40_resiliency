@@ -6,7 +6,12 @@ const mongoose = require('mongoose'),
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    lastName: {
       type: String,
       required: true,
       trim: true
@@ -100,7 +105,7 @@ userSchema.virtual('requests', {
  * // By naming this instance method toJSON we don't
  * // need to call it for it to run because of our
  * // express res.send or res.json methods calls it for us.
- * @return { name, email, admin, avatar, timestamps }
+ * @return { firstName, email, admin, avatar, timestamps }
  */
 userSchema.methods.toJSON = function () {
   const user = this;
@@ -118,7 +123,7 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign(
-    { _id: user._id.toString(), name: user.name },
+    { _id: user._id.toString(), name: user.firstName },
     process.env.JWT_SECRET,
     { expiresIn: '24h' }
   );

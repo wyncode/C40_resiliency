@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // Unauthenticated routes
-app.use(openRoutes);
+app.use('/api/users', openRoutes);
 
 app.use(cookieParser());
 
@@ -26,9 +26,9 @@ if (process.env.NODE_ENV === 'production') {
 // Any authentication middleware and related routing would be here.
 // app.use('/api/*', passport.authenticate('jwt', { session: false }));
 
-app.use(userRouter);
+app.use('/api/users', userRouter);
 
-app.use(requestRouter);
+app.use('/api/requests', requestRouter);
 
 // Handle React routing, return all requests to React app
 if (process.env.NODE_ENV === 'production') {

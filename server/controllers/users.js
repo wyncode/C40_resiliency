@@ -9,7 +9,8 @@ const User = require('../db/models/user'),
 
 /**
  * Create a user
- * @param {name, email, password}
+ * @param {firstName, lastName, dob, email, password, phone, address, city,
+ * state, zip, municipality}
  * @return {user}
  */
 exports.createUser = async (req, res) => {
@@ -41,7 +42,7 @@ exports.createUser = async (req, res) => {
       municipality
     });
     const token = await user.generateAuthToken();
-    sendWelcomeEmail(user.email, user.firstName);
+    // sendWelcomeEmail(user.email, user.firstName);
     res.cookie('jwt', token, {
       httpOnly: true,
       sameSite: 'Strict',
@@ -88,7 +89,7 @@ exports.requestPasswordReset = async (req, res) => {
       user = await User.findOne({ email });
     if (!user) throw new Error('no user found');
     const token = jwt.sign(
-      { _id: user._id.toString(), name: user.name },
+      { _id: user._id.toString(), name: user.firstName },
       process.env.JWT_SECRET,
       {
         expiresIn: '10m'
@@ -133,7 +134,13 @@ exports.passwordRedirect = async (req, res) => {
 
 exports.updateCurrentUser = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['name', 'email', 'password', 'avatar'];
+  const allowedUpdates = [
+    'firstName',
+    'lastName',
+    'email',
+    'password',
+    'avatar'
+  ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
@@ -189,7 +196,7 @@ exports.logoutAllDevices = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     await req.user.remove();
-    sendCancellationEmail(req.user.email, req.user.name);
+    // sendCancellationEmail(req.user.email, req.user.firstName);
     res.clearCookie('jwt');
     res.json({ message: 'user deleted' });
   } catch (error) {
