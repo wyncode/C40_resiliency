@@ -39,12 +39,12 @@ exports.getSpecificRequest = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(_id)) {
       return res.status(400).send('not a valid id');
     }
-    const task = await Task.findOne({
+    const request = await Request.findOne({
       _id,
       owner: req.user._id
     });
-    if (!task) return res.status(404).send();
-    res.json(task);
+    if (!request) return res.status(404).send();
+    res.json(request);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
@@ -70,7 +70,7 @@ exports.getAllRequests = async (req, res) => {
   try {
     await req.user
       .populate({
-        path: 'tasks',
+        path: 'requests',
         match,
         options: {
           limit: parseInt(req.query.limit),
@@ -79,7 +79,7 @@ exports.getAllRequests = async (req, res) => {
         }
       })
       .execPopulate();
-    res.json(req.user.tasks);
+    res.json(req.user.requests);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
@@ -96,21 +96,21 @@ exports.updateRequest = async (req, res) => {
   if (!isValidOperation)
     return res.status(400).send({ error: 'Invalid updates!' });
   try {
-    const task = await Task.findOne({
+    const request = await Request.findOne({
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!task) return res.status(404).json({ error: 'task not found' });
-    updates.forEach((update) => (task[update] = req.body[update]));
-    await task.save();
-    res.json(task);
+    if (!request) return res.status(404).json({ error: 'request not found' });
+    updates.forEach((update) => (request[update] = req.body[update]));
+    await request.save();
+    res.json(request);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }
 };
 
 // ***********************************************//
-// Delete a task
+// Delete a request
 // ***********************************************//
 exports.deleteRequest = async (req, res) => {
   try {

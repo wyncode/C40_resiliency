@@ -6,16 +6,18 @@ const requestSchema = new mongoose.Schema({
     required: true
   },
   description: {
-    type: String,
-    required: false
+    type: String
   },
   photo: {
-    type: String,
-    required: false
+    type: String
   },
   resolution: {
-    type: String,
+    type: Boolean,
     default: false
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 const Request = mongoose.model('Request', requestSchema);

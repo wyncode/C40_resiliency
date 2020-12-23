@@ -105,7 +105,7 @@ userSchema.virtual('requests', {
  * // By naming this instance method toJSON we don't
  * // need to call it for it to run because of our
  * // express res.send or res.json methods calls it for us.
- * @return { firstName, email, admin, avatar, timestamps }
+ * @return { firstName, lastName, email, admin, avatar, timestamps }
  */
 userSchema.methods.toJSON = function () {
   const user = this;
