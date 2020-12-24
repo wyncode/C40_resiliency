@@ -24,8 +24,7 @@ exports.createUser = async (req, res) => {
     address,
     city,
     state,
-    zip,
-    municipality
+    zip
   } = req.body;
   try {
     const user = new User({
@@ -38,8 +37,7 @@ exports.createUser = async (req, res) => {
       address,
       city,
       state,
-      zip,
-      municipality
+      zip
     });
     const token = await user.generateAuthToken();
     // sendWelcomeEmail(user.email, user.firstName);

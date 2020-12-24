@@ -53,10 +53,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    municipality: {
-      type: String,
-      requred: true
-    },
     password: {
       type: String,
       required: true,
