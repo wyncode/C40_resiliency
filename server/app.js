@@ -1,6 +1,6 @@
 require('./db/config');
 const express = require('express'),
-  // passport = require('./middleware/authentication'),
+  passport = require('./middleware/authentication'),
   path = require('path'),
   morgan = require('morgan'),
   cookieParser = require('cookie-parser'),
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Any authentication middleware and related routing would be here.
-// app.use('/api/*', passport.authenticate('jwt', { session: false }));
+app.use('/api/*', passport.authenticate('jwt', { session: false }));
 
 app.use('/api/users', userRouter);
 

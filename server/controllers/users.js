@@ -83,8 +83,10 @@ exports.loginUser = async (req, res) => {
  */
 exports.requestPasswordReset = async (req, res) => {
   try {
-    const { email } = req.query,
-      user = await User.findOne({ email });
+    const { email } = req.query;
+    console.log('IS IT HERE', email);
+    const user = await User.findOne({ email });
+    console.log('HOW ABOUT HERE', email);
     if (!user) throw new Error('no user found');
     const token = jwt.sign(
       { _id: user._id.toString(), name: user.firstName },
