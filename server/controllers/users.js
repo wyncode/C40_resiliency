@@ -1,15 +1,16 @@
 const User = require('../db/models/user'),
   cloudinary = require('cloudinary').v2,
-  jwt = require('jsonwebtoken'),
-  {
-    sendWelcomeEmail,
-    sendCancellationEmail,
-    forgotPasswordEmail
-  } = require('../emails/');
+  jwt = require('jsonwebtoken');
+// {
+//   sendWelcomeEmail,
+//   sendCancellationEmail,
+//   forgotPasswordEmail
+// } = require('../emails/');
 
 /**
  * Create a user
- * @param {name, email, password}
+ * @param {firstName, lastName, dob, email, password, phone, address, city,
+ * state, zip, municipality}
  * @return {user}
  */
 exports.createUser = async (req, res) => {
@@ -23,8 +24,7 @@ exports.createUser = async (req, res) => {
     address,
     city,
     state,
-    zip,
-    municipality
+    zip
   } = req.body;
   try {
     const user = new User({
@@ -37,11 +37,10 @@ exports.createUser = async (req, res) => {
       address,
       city,
       state,
-      zip,
-      municipality
+      zip
     });
     const token = await user.generateAuthToken();
-    sendWelcomeEmail(user.email, user.firstName);
+    // sendWelcomeEmail(user.email, user.firstName);
     res.cookie('jwt', token, {
       httpOnly: true,
       sameSite: 'Strict',
@@ -84,11 +83,13 @@ exports.loginUser = async (req, res) => {
  */
 exports.requestPasswordReset = async (req, res) => {
   try {
-    const { email } = req.query,
-      user = await User.findOne({ email });
+    const { email } = req.query;
+    console.log('IS IT HERE', email);
+    const user = await User.findOne({ email });
+    console.log('HOW ABOUT HERE', email);
     if (!user) throw new Error('no user found');
     const token = jwt.sign(
-      { _id: user._id.toString(), name: user.name },
+      { _id: user._id.toString(), name: user.firstName },
       process.env.JWT_SECRET,
       {
         expiresIn: '10m'
@@ -121,9 +122,38 @@ exports.passwordRedirect = async (req, res) => {
   } catch (e) {
     res.json({ error: e.toString() });
   }
+
+  //Authenticated routes
 };
 
-//Authenticated routes
+/**
+ * @param {{updates}}
+ * Update a user
+ * @return {user}
+ */
+
+exports.updateCurrentUser = async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = [
+    'firstName',
+    'lastName',
+    'email',
+    'password',
+    'avatar'
+  ];
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  if (!isValidOperation)
+    return res.status(400).send({ error: 'invalid updates!' });
+  try {
+    updates.forEach((update) => (req.user[update] = req.body[update]));
+    await req.user.save();
+    res.json(req.user);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
+  }
+};
 
 /**
  * @param {}
@@ -166,11 +196,28 @@ exports.logoutAllDevices = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     await req.user.remove();
-    sendCancellationEmail(req.user.email, req.user.name);
+    // sendCancellationEmail(req.user.email, req.user.firstName);
     res.clearCookie('jwt');
     res.json({ message: 'user deleted' });
   } catch (error) {
     res.status(500).json({ error: error.toString() });
+  }
+};
+/**
+ * @param {image}
+ * Upload avatar
+ * @return {}
+ */
+exports.uploadAvatar = async (req, res) => {
+  try {
+    const response = await cloudinary.uploader.upload(
+      req.files.avatar.tempFilePath
+    );
+    req.user.avatar = response.secure_url;
+    await req.user.save();
+    res.json(response);
+  } catch (e) {
+    res.json({ error: e.toString() });
   }
 };
 
