@@ -6,6 +6,15 @@ const mongoose = require('mongoose'),
 
 const userSchema = new mongoose.Schema(
   {
+    orgName: {
+      type: String,
+      trim: true
+    },
+
+    positionTitle: {
+      type: String,
+      trim: true
+    },
     firstName: {
       type: String,
       required: true,
@@ -49,6 +58,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+
+    municipality: {
+      type: String
+    },
+
     zip: {
       type: String,
       required: true
@@ -80,6 +94,10 @@ const userSchema = new mongoose.Schema(
       }
     ],
     avatar: {
+      type: String
+    },
+
+    logo: {
       type: String
     }
   },
