@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const requestSchema = new mongoose.Schema({
   aidType: {
-    type: Array,
-    required: true
+    type: [String],
+    required: true,
+    enum: ['water', 'food', 'health services', "children's education"]
   },
   description: {
     type: String
