@@ -27,7 +27,7 @@ const Signup = ({ history }) => {
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1>Task Manager</h1>
+      <h1>request Manager</h1>
       <Form style={{ width: 300 }} onSubmit={handleSignUp}>
         <Form.Group>
           <Form.Label htmlFor="fullName">Full Name</Form.Label>

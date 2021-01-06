@@ -6,21 +6,24 @@ import Logout from './Logout';
 import dueFilter from '../helpers/DueFilter';
 
 const Navigation = () => {
-  const { currentUser, tasks, setFilteredTasks, setCurrentFilter } = useContext(
-    AppContext
-  );
+  const {
+    currentUser,
+    requests,
+    setFilteredrequests,
+    setCurrentFilter
+  } = useContext(AppContext);
 
   const [active, setActive] = useState({ completed: false, pending: false });
 
   const filterCompleted = (query) => {
-    dueFilter(query, tasks, setFilteredTasks);
+    dueFilter(query, requests, setFilteredrequests);
     setCurrentFilter(query);
   };
 
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={Link} to="/">
-        Task Manager
+        request Manager
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

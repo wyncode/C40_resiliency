@@ -15,7 +15,7 @@ exports.fetchAllRequests = async (req, res) => {
   }
 };
 // ***********************************************//
-// Create a task
+// Create a request
 // ***********************************************//
 exports.createRequest = async (req, res) => {
   console.log('hello');
@@ -31,7 +31,7 @@ exports.createRequest = async (req, res) => {
   }
 };
 // ***********************************************//
-// Get a specific task
+// Get a specific request
 // ***********************************************//
 exports.getSpecificRequest = async (req, res) => {
   try {
@@ -51,11 +51,11 @@ exports.getSpecificRequest = async (req, res) => {
 };
 
 // ***********************************************//
-// Get all tasks
-// /tasks?completed=true
-// /tasks?limit=10&skip=10
-// /tasks?sortBy=createdAt:asc
-// /tasks?sortBy=dueDate:desc
+// Get all requests
+// /requests?completed=true
+// /requests?limit=10&skip=10
+// /requests?sortBy=createdAt:asc
+// /requests?sortBy=dueDate:desc
 // ***********************************************//
 exports.getAllRequests = async (req, res) => {
   const match = {},
@@ -85,7 +85,7 @@ exports.getAllRequests = async (req, res) => {
   }
 };
 // ***********************************************//
-// Update a task
+// Update a request
 // ***********************************************//
 exports.updateRequest = async (req, res) => {
   const updates = Object.keys(req.body);
@@ -100,7 +100,7 @@ exports.updateRequest = async (req, res) => {
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!request) return res.status(404).json({ error: 'request not found' });
+    if (!request) return res.status(404).json({ error: 'Request not found' });
     updates.forEach((update) => (request[update] = req.body[update]));
     await request.save();
     res.json(request);
@@ -118,8 +118,8 @@ exports.deleteRequest = async (req, res) => {
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!request) return res.status(404).json({ error: 'request not found' });
-    res.json({ message: 'request has been deleted' });
+    if (!request) return res.status(404).json({ error: 'Request not found' });
+    res.json({ message: 'Request has been deleted' });
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
