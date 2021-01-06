@@ -100,7 +100,7 @@ exports.updateRequest = async (req, res) => {
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!request) return res.status(404).json({ error: 'request not found' });
+    if (!request) return res.status(404).json({ error: 'Request not found' });
     updates.forEach((update) => (request[update] = req.body[update]));
     await request.save();
     res.json(request);
@@ -118,8 +118,8 @@ exports.deleteRequest = async (req, res) => {
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!request) return res.status(404).json({ error: 'request not found' });
-    res.json({ message: 'request has been deleted' });
+    if (!request) return res.status(404).json({ error: 'Request not found' });
+    res.json({ message: 'Request has been deleted' });
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }

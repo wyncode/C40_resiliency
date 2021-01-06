@@ -7,10 +7,10 @@ import Search from './Search';
 
 const requestList = () => {
   const {
-    setrequests,
+    setRequests,
     search,
-    filteredrequests,
-    setFilteredrequests,
+    filteredRequests,
+    setFilteredRequests,
     loading
   } = useContext(AppContext);
 
@@ -18,13 +18,13 @@ const requestList = () => {
     axios
       .get('/api/requests?sortBy=dueDate:asc', { withCredentials: true })
       .then((response) => {
-        setrequests(response.data);
-        setFilteredrequests(response.data);
+        setRequests(response.data);
+        setFilteredRequests(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [setrequests, setFilteredrequests, search, loading]);
+  }, [setRequests, setFilteredRequests, search, loading]);
 
   return (
     <Container>
@@ -38,7 +38,7 @@ const requestList = () => {
           </tr>
         </thead>
         <tbody>
-          <request requests={filteredrequests} />
+          <Request requests={filteredRequests} />
         </tbody>
       </Table>
     </Container>

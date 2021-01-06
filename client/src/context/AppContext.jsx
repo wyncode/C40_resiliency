@@ -5,8 +5,8 @@ const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [requests, setrequests] = useState([]);
-  const [filteredrequests, setFilteredrequests] = useState([]);
+  const [requests, setRequests] = useState([]);
+  const [filteredRequests, setFilteredRequests] = useState([]);
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState(null);
 
@@ -35,9 +35,9 @@ const AppContextProvider = ({ children }) => {
         loading,
         setLoading,
         requests,
-        setrequests,
-        filteredrequests,
-        setFilteredrequests,
+        setRequests,
+        filteredRequests,
+        setFilteredRequests,
         search,
         setSearch,
         currentFilter,
