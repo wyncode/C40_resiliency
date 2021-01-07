@@ -6,17 +6,17 @@ import Logout from './Logout';
 import dueFilter from '../helpers/DueFilter';
 
 const Navigation = () => {
-  const { currentUser, tasks, setFilteredTasks, setCurrentFilter } = useContext(
+  const { currentUser, requests, setFilteredTasks, setCurrentFilter } = useContext(
     AppContext
   );
 
   const [active, setActive] = useState({ completed: false, pending: false });
 
   const filterCompleted = (query) => {
-    dueFilter(query, tasks, setFilteredTasks);
+    dueFilter(query, tasks, setFilteredRequests);
     setCurrentFilter(query);
   };
-
+//do we have a hamburger nav bar installed below?
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={Link} to="/">

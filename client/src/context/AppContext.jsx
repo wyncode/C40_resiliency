@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+export const AppContext = createContext();
 
 const AppContext = createContext();
 
@@ -9,11 +10,34 @@ const AppContextProvider = ({ children }) => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState(null);
+  const [token, setToken] = useState('');
+
+  
 
   const [loading, setLoading] = useState(false);
 
   const user = sessionStorage.getItem('user');
+  useEffect(() => {
+    const getToken = async () => {
+      const resp = await axios.get('/GoogleAPI');
+      setToken(resp.data);
+    };
+    try {
+      getToken();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [setToken]);
 
+  return (
+    <AppContext.Provider
+      value={{
+        token
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
   useEffect(() => {
     if (user && !currentUser) {
       axios
