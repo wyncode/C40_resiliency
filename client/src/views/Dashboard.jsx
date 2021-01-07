@@ -17,8 +17,8 @@
 */
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Card } from 'components/Card/Card.jsx';
-import { StatsCard } from 'components/StatsCard/StatsCard.jsx';
+import { Card } from '../components/Card/Card';
+import { StatsCard } from '../components/StatsCard/StatsCard.jsx';
 import Maps from './Maps';
 import Table from './TableList';
 

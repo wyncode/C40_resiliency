@@ -16,60 +16,84 @@
 
 */
 import React, { Component } from 'react';
-// import { Grid, Row, Col, Table } from "react-bootstrap";
-import BootstrapTable from 'react-bootstrap-table-next';
+import { Grid, Row, Col, Table } from 'react-bootstrap';
 
-const AidTable = [
-  {
-    dataField: 'firstName',
-    text: 'First Name'
-  },
-  {
-    dataField: 'lastname',
-    text: 'Last Name',
-    sort: true
-  },
-  {
-    dataField: 'aidType',
-    text: 'Aid Type',
-    sort: true
-  },
-  {
-    dataField: 'email',
-    text: 'E-Mail'
-  },
-  {
-    dataField: 'phone',
-    text: 'Phone'
-  },
-  {
-    dataField: 'address',
-    text: 'Address'
-  },
-  {
-    dataField: 'city',
-    text: 'City',
-    sort: true
-  },
-  {
-    dataField: 'state',
-    text: 'State',
-    sort: true
-  },
-  {
-    dataField: 'zip',
-    text: 'Zip Code',
-    sort: true
-  },
-  {
-    dataField: 'photo',
-    text: 'Photo'
+import Card from '../components/Card/Card.jsx';
+import { thArray, tdArray } from '../variables/Variables.jsx';
+
+class TableList extends Component {
+  render() {
+    return (
+      <div className="content">
+        <Grid fluid>
+          <Row>
+            <Col md={12}>
+              <Card
+                title="Striped Table with Hover"
+                category="Here is a subtitle for this table"
+                ctTableFullWidth
+                ctTableResponsive
+                content={
+                  <Table striped hover>
+                    <thead>
+                      <tr>
+                        {thArray.map((prop, key) => {
+                          return <th key={key}>{prop}</th>;
+                        })}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tdArray.map((prop, key) => {
+                        return (
+                          <tr key={key}>
+                            {prop.map((prop, key) => {
+                              return <td key={key}>{prop}</td>;
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </Table>
+                }
+              />
+            </Col>
+
+            <Col md={12}>
+              <Card
+                plain
+                title="Striped Table with Hover"
+                category="Here is a subtitle for this table"
+                ctTableFullWidth
+                ctTableResponsive
+                content={
+                  <Table hover>
+                    <thead>
+                      <tr>
+                        {thArray.map((prop, key) => {
+                          return <th key={key}>{prop}</th>;
+                        })}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tdArray.map((prop, key) => {
+                        return (
+                          <tr key={key}>
+                            {prop.map((prop, key) => {
+                              return <td key={key}>{prop}</td>;
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </Table>
+                }
+              />
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    );
   }
-];
-
-function Table({ ...prop }) {
-  return <AidTable keyField="id" data={prop} striped hover condensed />;
 }
 
-export default Table;
-// columns={key}
+export default TableList;

@@ -9,7 +9,7 @@ const router = require('express').Router(),
     deleteRequest
   } = require('../../controllers/requests');
 
-router.get('/all', isAdmin(), fetchAllRequests);
+router.get('/all', fetchAllRequests);
 
 router.post('/', createRequest);
 
