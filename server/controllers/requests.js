@@ -6,19 +6,19 @@ const mongoose = require('mongoose'),
  * @param {}
  * @return {user}
  */
-exports.fetchAllRequests = async (req, res) => {
+exports.fetchAllRequests = async (request, response) => {
   try {
-    const request = await request.find();
-    res.json(requests);
+    const requests = await Request.find();
+
+    response.json(requests);
   } catch (e) {
-    res.status(500).json({ error: e.toString() });
+    response.status(500).json({ error: e.toString() });
   }
 };
 // ***********************************************//
 // Create a request
 // ***********************************************//
 exports.createRequest = async (req, res) => {
-  console.log('hello');
   try {
     const request = await new Request({
       ...req.body,
@@ -61,7 +61,7 @@ exports.getAllRequests = async (req, res) => {
   const match = {},
     sort = {};
 
-  if (req.query.completed) match.completed = req.query.completed === 'true';
+  // if (req.query.completed) match.completed = req.query.completed === 'true';
 
   if (req.query.sortBy) {
     const parts = req.query.sortBy.split(':');
@@ -79,6 +79,7 @@ exports.getAllRequests = async (req, res) => {
         }
       })
       .execPopulate();
+
     res.json(req.user.requests);
   } catch (e) {
     res.status(500).json({ error: e.toString() });

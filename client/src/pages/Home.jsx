@@ -1,15 +1,12 @@
 import React from 'react';
-import Navigation from '../components/Navigation';
-import requestForm from '../components/requestForm';
-import requestList from '../components/requestList';
+import Navigation from '../components/UserNavigation';
+import { Button } from 'react-bootstrap';
 
 const Home = () => {
   return (
     <div>
       <Navigation />
       <h1>Home</h1>
-      <requestList />
-      <requestForm />
     </div>
   );
 };
