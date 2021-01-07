@@ -3,28 +3,28 @@ import { Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 
-const TaskForm = () => {
-  const [taskData, setTaskData] = useState(null);
+const requestForm = () => {
+  const [requestData, setrequestData] = useState(null);
 
   const { setLoading } = useContext(AppContext);
 
   const handleChange = (e) => {
-    setTaskData({ ...taskData, [e.target.name]: e.target.value });
+    setrequestData({ ...requestData, [e.target.name]: e.target.value });
   };
 
-  const handleTaskSubmission = async (e) => {
+  const handlerequestsubmission = async (e) => {
     const form = e.target;
     setLoading(true);
     e.preventDefault();
     try {
       const response = await axios({
         method: 'POST',
-        url: '/api/tasks',
+        url: '/api/requests',
         withCredentials: true,
-        data: taskData
+        data: requestData
       });
       console.log(response);
-      setTaskData(null);
+      setrequestData(null);
       setLoading(false);
       form.reset();
     } catch (error) {
@@ -34,12 +34,12 @@ const TaskForm = () => {
 
   return (
     <Container>
-      <Form onSubmit={handleTaskSubmission}>
+      <Form onSubmit={handlerequestsubmission}>
         <Form.Group>
           <Form.Label>Description</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter a task"
+            placeholder="Enter a request"
             name="description"
             onChange={handleChange}
             required
@@ -49,18 +49,18 @@ const TaskForm = () => {
           <Form.Label>Due Date</Form.Label>
           <Form.Control
             type="date"
-            placeholder="Enter a task"
+            placeholder="Enter a request"
             name="dueDate"
             onChange={handleChange}
             className="col-md-4"
           />
         </Form.Group>
         <Form.Group controlId="formBasicEmail">
-          <Button type="submit">Add Task</Button>
+          <Button type="submit">Add request</Button>
         </Form.Group>
       </Form>
     </Container>
   );
 };
 
-export default TaskForm;
+export default requestForm;
