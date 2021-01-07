@@ -107,7 +107,7 @@ const userSchema = new mongoose.Schema(
 );
 
 /**
- * Create a virtual relation between User and task.
+ * Create a virtual relation between User and request.
  */
 userSchema.virtual('requests', {
   ref: 'Request',
@@ -179,7 +179,7 @@ userSchema.pre('save', async function (next) {
 });
 
 /**
- * Delete user tasks when a user is removed.
+ * Delete user requests when a user is removed.
  */
 userSchema.pre('remove', async function (next) {
   const user = this;

@@ -2,29 +2,29 @@ import React, { useEffect, useContext } from 'react';
 import { Container, Table } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
-import Task from './Task';
+import request from './request';
 import Search from './Search';
 
-const TaskList = () => {
+const requestList = () => {
   const {
-    setTasks,
+    setRequests,
     search,
-    filteredTasks,
-    setFilteredTasks,
+    filteredRequests,
+    setFilteredRequests,
     loading
   } = useContext(AppContext);
 
   useEffect(() => {
     axios
-      .get('/api/tasks?sortBy=dueDate:asc', { withCredentials: true })
+      .get('/api/requests?sortBy=dueDate:asc', { withCredentials: true })
       .then((response) => {
-        setTasks(response.data);
-        setFilteredTasks(response.data);
+        setRequests(response.data);
+        setFilteredRequests(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [setTasks, setFilteredTasks, search, loading]);
+  }, [setRequests, setFilteredRequests, search, loading]);
 
   return (
     <Container>
@@ -38,11 +38,11 @@ const TaskList = () => {
           </tr>
         </thead>
         <tbody>
-          <Task tasks={filteredTasks} />
+          <Request requests={filteredRequests} />
         </tbody>
       </Table>
     </Container>
   );
 };
 
-export default TaskList;
+export default requestList;
