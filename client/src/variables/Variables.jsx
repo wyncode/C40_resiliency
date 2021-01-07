@@ -311,7 +311,19 @@ var style = {
 //   },
 // ];
 
-const thArray = ['ID', 'Name', 'Salary', 'Country', 'City'];
+const thArray = [
+  'ID',
+  'First Name',
+  'Last Name',
+  'Aid Type',
+  'Email',
+  'Phone',
+  'Address',
+  'City',
+  'State',
+  'Zip',
+  'Photo'
+];
 const tdArray = [
   ['1', 'Dakota Rice', '$36,738', 'Niger', 'Oud-Turnhout'],
   ['2', 'Minerva Hooper', '$23,789', 'Curaçao', 'Sinaai-Waas'],

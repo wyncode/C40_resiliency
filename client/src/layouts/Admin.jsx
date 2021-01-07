@@ -40,38 +40,7 @@ class Admin extends Component {
       fixedClasses: 'dropdown show-dropdown open'
     };
   }
-  handleNotificationClick = (position) => {
-    var color = Math.floor(Math.random() * 4 + 1);
-    var level;
-    switch (color) {
-      case 1:
-        level = 'success';
-        break;
-      case 2:
-        level = 'warning';
-        break;
-      case 3:
-        level = 'error';
-        break;
-      case 4:
-        level = 'info';
-        break;
-      default:
-        break;
-    }
-    this.state._notificationSystem.addNotification({
-      title: <span data-notify="icon" className="pe-7s-gift" />,
-      message: (
-        <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
-        </div>
-      ),
-      level: level,
-      position: position,
-      autoDismiss: 15
-    });
-  };
+
   getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === '/admin') {
@@ -120,40 +89,6 @@ class Admin extends Component {
       this.setState({ fixedClasses: 'dropdown' });
     }
   };
-  componentDidMount() {
-    this.setState({ _notificationSystem: this.refs.notificationSystem });
-    var _notificationSystem = this.refs.notificationSystem;
-    var color = Math.floor(Math.random() * 4 + 1);
-    var level;
-    switch (color) {
-      case 1:
-        level = 'success';
-        break;
-      case 2:
-        level = 'warning';
-        break;
-      case 3:
-        level = 'error';
-        break;
-      case 4:
-        level = 'info';
-        break;
-      default:
-        break;
-    }
-    _notificationSystem.addNotification({
-      title: <span data-notify="icon" className="pe-7s-gift" />,
-      message: (
-        <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
-        </div>
-      ),
-      level: level,
-      position: 'tr',
-      autoDismiss: 15
-    });
-  }
   componentDidUpdate(e) {
     if (
       window.innerWidth < 993 &&

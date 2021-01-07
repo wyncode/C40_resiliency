@@ -6,7 +6,7 @@
   width: 260px;
   display: block;
   z-index: 1;
-  color: #fff;
+  color: white;
   font-weight: 200;
   background-size: cover;
   background-position: center center;
@@ -34,10 +34,10 @@
 
   .logo {
     padding: 10px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 122, 254, 1);
     position: relative;
     z-index: 4;
-
+    // 255, 255, 255, 0.2
     p {
       float: left;
       font-size: 20px;
@@ -79,7 +79,7 @@
 
   .logo-tim {
     border-radius: 50%;
-    border: 1px solid #333;
+    border: 1px solid #007afe;
     display: block;
     height: 61px;
     width: 61px;
@@ -107,14 +107,14 @@
       &.open > a,
       &.open > a:focus,
       &.open > a:hover {
-        background: rgba(255, 255, 255, 0.13);
+        background: rgba(0, 122, 254, 1);
         opacity: 1;
       }
 
       &.active > a {
         color: #ffffff;
         opacity: 1;
-        background: rgba(255, 255, 255, 0.23);
+        background: rgba(0, 122, 254, 1);
       }
     }
 
@@ -147,7 +147,7 @@
 body > .navbar-collapse {
   .logo {
     padding: 10px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 122, 254, 1);
 
     p {
       float: left;
@@ -171,7 +171,7 @@ body > .navbar-collapse {
 
   .logo-tim {
     border-radius: 50%;
-    border: 1px solid #333;
+    border: 1px solid #007afe;
     display: block;
     height: 61px;
     width: 61px;
@@ -197,8 +197,8 @@ body > .navbar-collapse {
   }
 
   &:before {
-    opacity: 0.33;
-    background: #000000;
+    opacity: 0.5;
+    background: #007afe;
   }
 
   &:after {
