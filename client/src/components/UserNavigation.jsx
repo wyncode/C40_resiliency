@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { Navbar, Nav, Dropdown, Image } from 'react-bootstrap';
 import Logout from './Logout';
-import dueFilter from '../helpers/DueFilter';
 
 const Navigation = () => {
   const {
@@ -16,7 +15,6 @@ const Navigation = () => {
   const [active, setActive] = useState({ completed: false, pending: false });
 
   const filterCompleted = (query) => {
-    dueFilter(query, requests, setFilteredrequests);
     setCurrentFilter(query);
   };
   //do we have a hamburger nav bar installed below?

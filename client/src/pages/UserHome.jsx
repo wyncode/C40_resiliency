@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navigation from '../components/UserNavigation';
-import { Button } from 'react-bootstrap';
 
-const Home = () => {
+const UserHome = () => {
   return (
     <div>
       <Navigation />

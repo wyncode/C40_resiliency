@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Container, Image, Button } from 'react-bootstrap';
-import wyncode from '../assets/images/wyncode.png';
+import { Grid, Image, Button } from 'react-bootstrap';
+import wyncode from '../assets/img/tim_80x80.png';
 import Navigation from '../components/UserNavigation';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
+import history from '../history';
 
 const Profile = ({ history: { push } }) => {
   const { currentUser, setCurrentUser, setLoading } = useContext(AppContext);
@@ -74,7 +75,7 @@ const Profile = ({ history: { push } }) => {
   return (
     <>
       <Navigation />
-      <Container className="d-flex justify-content-center align-items-center flex-column">
+      <Grid className="d-flex justify-content-center align-items-center flex-column">
         <h1 className="mt-4">Your Profile</h1>
         <div className="mt-4">
           <Image
@@ -116,7 +117,7 @@ const Profile = ({ history: { push } }) => {
             Delete Account
           </Button>
         </div>
-      </Container>
+      </Grid>
     </>
   );
 };

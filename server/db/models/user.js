@@ -59,10 +59,6 @@ const userSchema = new mongoose.Schema(
       required: true
     },
 
-    municipality: {
-      type: String
-    },
-
     zip: {
       type: String,
       required: true

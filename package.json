@@ -32,7 +32,9 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react": "^17.0.1",
+    "react-router-dom": "5.0.0",
     "set-cookie-parser": "^2.4.6",
+    "sweetalert": "^2.1.2",
     "validation": "^0.0.1",
     "validator": "^13.5.2"
   },

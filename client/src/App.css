@@ -1,11 +1,3 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
-
-#demo {
-  width: 100vw;
+.fullscreen {
   height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
-
-/* END DEMO */
