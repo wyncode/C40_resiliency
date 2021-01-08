@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Grid, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
@@ -26,7 +26,7 @@ const Signup = ({ history }) => {
   };
 
   return (
-    <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
+    <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <h1>Task Manager</h1>
       <Form style={{ width: 300 }} onSubmit={handleSignUp}>
         <Form.Group>
@@ -66,7 +66,7 @@ const Signup = ({ history }) => {
       <Link className="mt-4" to="/login">
         Already have an account? Log in.
       </Link>
-    </Container>
+    </Grid>
   );
 };
 
