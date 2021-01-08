@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const NPSignup = ({ history }) => {
+const UserSignupRequest = ({ history }) => {
   const [formData, setFormData] = useState(null);
 
   const { setCurrentUser } = useContext(AppContext);
@@ -27,7 +27,7 @@ const NPSignup = ({ history }) => {
 
   return (
     <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1>request Manager</h1>
+      <h1>Task Manager</h1>
       <Form style={{ width: 300 }} onSubmit={handleSignUp}>
         <Form.Group>
           <Form.Label htmlFor="fullName">Full Name</Form.Label>
@@ -70,4 +70,4 @@ const NPSignup = ({ history }) => {
   );
 };
 
-export default NPSignup;
+export default UserSignupRequest;

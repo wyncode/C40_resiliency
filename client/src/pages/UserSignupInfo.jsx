@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const Signup = ({ history }) => {
+const UserSignupInfo = ({ history }) => {
   const [formData, setFormData] = useState(null);
 
   const { setCurrentUser } = useContext(AppContext);
@@ -70,4 +70,4 @@ const Signup = ({ history }) => {
   );
 };
 
-export default Signup;
+export default UserSignupInfo;

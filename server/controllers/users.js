@@ -10,7 +10,7 @@ const User = require('../db/models/user'),
 /**
  * Create a user
  * @param {firstName, lastName, dob, email, password, phone, address, city,
- * state, zip, municipality}
+ * state, zip}
  * @return {user}
  */
 exports.createUser = async (req, res) => {
