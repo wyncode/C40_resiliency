@@ -16,13 +16,13 @@
 
 */
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
+import { Grid } from 'react-bootstrap';
 
 class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <Container fluid>
+        <Grid fluid>
           <nav className="pull-left">
             <ul>
               <li>
@@ -46,7 +46,7 @@ class Footer extends Component {
             </a>
             , made with love for a better web
           </p>
-        </Container>
+        </Grid>
       </footer>
     );
   }
