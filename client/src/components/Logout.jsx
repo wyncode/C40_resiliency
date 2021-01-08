@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
+import history from '../history';
 
 const Logout = () => {
   const { setCurrentUser } = useContext(AppContext);
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSignOut = async () => {
     try {
@@ -25,7 +26,7 @@ const Logout = () => {
       swal('Oops!', 'Something went wrong.');
     }
   };
-  return <DropdownItem onClick={handleSignOut}>Logout</DropdownItem>;
+  return <Dropdown onClick={handleSignOut}>Logout</Dropdown>;
 };
 
 export default Logout;

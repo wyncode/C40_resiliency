@@ -1,8 +1,9 @@
 import React from 'react';
 import Navigation from '../components/UserNavigation';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const Home = () => {
+function Home() {
   return (
     <div>
       <Navigation />
@@ -14,6 +15,6 @@ const Home = () => {
       ;
     </div>
   );
-};
+}
 
 export default Home;
