@@ -15,15 +15,12 @@ const AppContextProvider = ({ children }) => {
   const user = sessionStorage.getItem('user');
 
   useEffect(() => {
+    //incase the user refreshes & context is cleared
     if (user && !currentUser) {
       axios
         .get('/api/users/me', { withCredentials: true })
-        .then(({ data }) => {
-          setCurrentUser(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .then((res) => setCurrentUser(res.data))
+        .catch((error) => console.log(error));
     }
   }, [currentUser, user]);
 

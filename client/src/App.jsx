@@ -11,7 +11,7 @@ import UserSignupRequest from './pages/UserSignupRequest';
 import UserSignupInfo from './pages/UserSignupInfo';
 import NPSignup from './pages/NPSignup';
 import { AppContextProvider } from './context/AppContext';
-import PrivateRoute from './components/PrivateRoute';
+// import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/Profile';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
@@ -32,16 +32,12 @@ function App() {
           <Route exact path="/usersignupinfo" component={UserSignupInfo} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/updatepassword" component={UpdatePassword} />
-          <PrivateRoute exact path="/userhome" component={UserHome} />
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <PrivateRoute exact path="./views/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="./views/maps" component={Maps} />
-          <PrivateRoute exact path="./views/tablelist" component={TableList} />
-          <PrivateRoute
-            exact
-            path="./views/UserProfile"
-            component={UserProfile}
-          />
+          <Route exact path="/userhome" component={UserHome} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/views/dashboard" component={Dashboard} />
+          <Route exact path="/views/maps" component={Maps} />
+          <Route exact path="/views/tablelist" component={TableList} />
+          <Route exact path="/views/UserProfile" component={UserProfile} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

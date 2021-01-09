@@ -17,10 +17,7 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Route } from 'react-router';
-import history from './history';
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
@@ -30,12 +27,8 @@ import './assets/css/pe-icon-7-stroke.css';
 import App from './App.jsx';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/" render={(props) => <App {...props} />} />
-      {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
-      {/* <Redirect from="/" to="/admin/dashboard" /> */}
-    </Switch>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );

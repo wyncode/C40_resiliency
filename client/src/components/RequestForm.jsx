@@ -35,29 +35,29 @@ const requestForm = () => {
   return (
     <Container>
       <Form onSubmit={handlerequestsubmission}>
-        <Form.Group>
-          <Form.Label>Description</Form.Label>
-          <Form.Control
+        <FormGroup>
+          <ControlLabel>Description</ControlLabel>
+          <FormControl
             type="text"
             placeholder="Enter a request"
             name="description"
             onChange={handleChange}
             required
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicDueDate">
-          <Form.Label>Due Date</Form.Label>
-          <Form.Control
+        </FormGroup>
+        <FormGroup controlId="formBasicDueDate">
+          <ControlLabel>Due Date</ControlLabel>
+          <FormControl
             type="date"
             placeholder="Enter a request"
             name="dueDate"
             onChange={handleChange}
             className="col-md-4"
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
+        </FormGroup>
+        <FormGroup controlId="formBasicEmail">
           <Button type="submit">Add request</Button>
-        </Form.Group>
+        </FormGroup>
       </Form>
     </Container>
   );
