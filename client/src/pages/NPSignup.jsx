@@ -136,12 +136,12 @@ const NPSignup = ({ history }) => {
             placeholder="Password..."
             onChange={handleChange}
           />
-          <FormControl
+          <FormGroup
             className="d-flex justify-content-center"
             onClick={handleSignUp}
           >
-            <Button type="submit">Login</Button>
-          </FormControl>
+            <Button bsStyle="primary">Submit</Button>
+          </FormGroup>
         </Form>
         <Link href="/login">Already have an account? Log in.</Link>
       </Grid>
