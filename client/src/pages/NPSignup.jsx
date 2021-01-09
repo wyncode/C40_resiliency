@@ -49,7 +49,7 @@ const NPSignup = ({ history }) => {
     <React.Fragment>
       <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
         <h1>The Resiliency Connection</h1>
-        <form>
+        <Form>
           <FormGroup>
             <ControlLabel>Organization Name</ControlLabel>
             <FormControl
@@ -136,7 +136,13 @@ const NPSignup = ({ history }) => {
             placeholder="Password..."
             onChange={handleChange}
           />
-        </form>
+          <FormControl
+            className="d-flex justify-content-center"
+            onClick={handleSignUp}
+          >
+            <Button type="submit">Login</Button>
+          </FormControl>
+        </Form>
         <Link href="/login">Already have an account? Log in.</Link>
       </Grid>
     </React.Fragment>

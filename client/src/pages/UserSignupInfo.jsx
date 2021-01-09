@@ -20,16 +20,29 @@ const UserSignupInfo = ({ history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/users', formData);
-      setCurrentUser(response.data.user);
-      sessionStorage.setItem('user', response.data);
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(formData);
+    axios
+      .post('/api/users', formData)
+      .then((res) => {
+        console.log(res.data);
+        sessionStorage.setItem('user', res.data);
+        setCurrentUser(res.data);
+        history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // e.preventDefault();
+    // try {
+    //   const response = await axios.post('/api/users', formData);
+    //   sessionStorage.setItem('user', response.data);
+    //   setCurrentUser(response.data);
+    //   history.push('/');
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -109,6 +122,12 @@ const UserSignupInfo = ({ history }) => {
             placeholder="Password..."
             onChange={handleChange}
           />
+          <FormControl
+            className="d-flex justify-content-center"
+            onClick={handleSignUp}
+          >
+            <Button type="submit">Login</Button>
+          </FormControl>
         </Form>
         <Link href="/login">Already have an account? Log in.</Link>
       </Grid>
