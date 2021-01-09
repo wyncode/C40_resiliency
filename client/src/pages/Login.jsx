@@ -1,5 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { Grid, Form, Button } from 'react-bootstrap';
+import {
+  Grid,
+  Form,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Button
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
@@ -30,29 +37,29 @@ const Login = ({ history }) => {
     <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <h1>Request Manager</h1>
       <Form style={{ width: 300 }} onSubmit={handleLogin}>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email Address</Form.Label>
-          <Form.Control
+        <FormGroup>
+          <ControlLabel htmlFor="email">Email Address</ControlLabel>
+          <FormControl
             id="email"
             type="email"
             placeholder="Email Address"
             name="email"
             onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel htmlFor="password">Password</ControlLabel>
+          <FormControl
             id="password"
             type="password"
             placeholder="Password"
             name="password"
             onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Group className="d-flex justify-content-center">
+        </FormGroup>
+        <FormGroup className="d-flex justify-content-center">
           <Button type="submit">Login</Button>
-        </Form.Group>
+        </FormGroup>
       </Form>
       <Link className="mt-4" to="/signup">
         Need an account? Sign up.

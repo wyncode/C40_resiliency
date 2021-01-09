@@ -8,9 +8,23 @@ const User = require('../db/models/user'),
 // } = require('../emails/');
 
 /**
+ * Admin route fetchn all user
+ * @param {}
+ * @return {user}
+ */
+exports.fetchAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
+  }
+};
+
+/**
  * Create a user
  * @param {firstName, lastName, dob, email, password, phone, address, city,
- * state, zip, municipality}
+ * state, zip}
  * @return {user}
  */
 exports.createUser = async (req, res) => {
@@ -46,6 +60,7 @@ exports.createUser = async (req, res) => {
       sameSite: 'Strict',
       secure: process.env.NODE_ENV !== 'production' ? false : true
     });
+    user.save();
     res.status(201).json(user);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
