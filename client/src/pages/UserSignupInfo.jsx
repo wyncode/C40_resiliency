@@ -33,47 +33,86 @@ const UserSignupInfo = ({ history }) => {
   };
 
   return (
-    <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1>Task Manager</h1>
-      <Form style={{ width: 300 }} onSubmit={handleSignUp}>
-        <FormGroup>
-          <ControlLabel htmlFor="fullName">Full Name</ControlLabel>
+    <React.Fragment>
+      <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
+        <h1>The Resiliency Connection</h1>
+        <Form>
+          <FormGroup>
+            <ControlLabel>First Name</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="First Name..."
+              onChange={handleChange}
+            />
+            <ControlLabel>Last Name</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="Last Name..."
+              onChange={handleChange}
+            />
+            <ControlLabel>Date of Birth</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="Date of Birth..."
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <ControlLabel>E-mail</ControlLabel>
           <FormControl
-            id="fullName"
             type="text"
-            placeholder="Full Name"
-            name="name"
+            // value={this.state.value}
+            placeholder="E-mail..."
             onChange={handleChange}
           />
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel htmlFor="email">Email Address</ControlLabel>
+          <ControlLabel>Phone Number</ControlLabel>
           <FormControl
-            id="email"
-            type="email"
-            placeholder="Email Address"
-            name="email"
+            type="text"
+            // value={this.state.value}
+            placeholder="Phone Number..."
             onChange={handleChange}
           />
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel htmlFor="password">Password</ControlLabel>
+          <ControlLabel>Street Address</ControlLabel>
           <FormControl
-            id="password"
-            type="password"
-            placeholder="Password"
-            name="password"
+            type="text"
+            // value={this.state.value}
+            placeholder="Street Address..."
             onChange={handleChange}
           />
-        </FormGroup>
-        <FormGroup className="d-flex justify-content-center">
-          <Button type="submit">Login</Button>
-        </FormGroup>
-      </Form>
-      <Link className="mt-4" to="/login">
-        Already have an account? Log in.
-      </Link>
-    </Grid>
+          <ControlLabel>City</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="City..."
+            onChange={handleChange}
+          />
+          <ControlLabel>State</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="State..."
+            onChange={handleChange}
+          />
+          <ControlLabel>Zip Code</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="Zip Code..."
+            onChange={handleChange}
+          />
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="Password..."
+            onChange={handleChange}
+          />
+        </Form>
+        <Link href="/login">Already have an account? Log in.</Link>
+      </Grid>
+    </React.Fragment>
   );
 };
 

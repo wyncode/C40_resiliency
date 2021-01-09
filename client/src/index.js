@@ -17,7 +17,7 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
