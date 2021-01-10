@@ -26,15 +26,6 @@ const AppContextProvider = ({ children }) => {
     }
   }, [setToken]);
 
-  return (
-    <AppContext.Provider
-      value={{
-        token
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
   useEffect(() => {
     //incase the user refreshes & context is cleared
     if (user && !currentUser) {
