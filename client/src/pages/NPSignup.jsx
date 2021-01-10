@@ -22,6 +22,7 @@ const NPSignup = ({ history }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    formData.admin = true;
     console.log(formData);
     axios
       .post('/api/users', formData)
@@ -143,7 +144,7 @@ const NPSignup = ({ history }) => {
     <React.Fragment>
       <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
         <h1>The Resiliency Connection</h1>
-        <form>
+        <Form>
           <FormGroup>
             <ControlLabel>Organization Name</ControlLabel>
             <FormControl
@@ -230,7 +231,13 @@ const NPSignup = ({ history }) => {
             placeholder="Password..."
             onChange={handleChange}
           />
-        </form>
+          <FormGroup
+            className="d-flex justify-content-center"
+            onClick={handleSignUp}
+          >
+            <Button bsStyle="primary">Submit</Button>
+          </FormGroup>
+        </Form>
         <Link href="/login">Already have an account? Log in.</Link>
       </Grid>
     </React.Fragment>

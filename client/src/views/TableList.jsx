@@ -15,53 +15,97 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
 import Card from '../components/Card/Card.jsx';
 import { thArray, tdArray } from '../variables/Variables.jsx';
 
-class TableList extends Component {
-  render() {
-    return (
-      <div className="content">
-        <Grid fluid>
-          <Row>
-            <Col md={12}>
-              <Card
-                title="Striped Table with Hover"
-                category="Here is a subtitle for this table"
-                ctTableFullWidth
-                ctTableResponsive
-                content={
-                  <Table striped hover>
-                    <thead>
-                      <tr>
-                        {thArray.map((prop, key) => {
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                }
-              />
-            </Col>
-          </Row>
-        </Grid>
-      </div>
-    );
-  }
-}
+const TableList = () => {
+  const [users, setUsers] = useState(null);
+  useEffect(() => {
+    fetch('/api/users/all')
+      .then((data) => data.json())
+      .then((res) => {
+        setUsers(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  return (
+    <table style={{ width: '100%' }} className="table table-hover">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Aid Type</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Photo</th>
+      </tr>
+      {users?.map((user) => {
+        return (
+          <tr style={{ border: '1px solid lightgrey' }}>
+            <td>{user.firstName}</td>
+            <td>{user.lastName}</td>
+            <td>{user.aidType}</td>
+            <td>{user.email}</td>
+            <td>{user.phone}</td>
+            <td>{user.address}</td>
+            <td>{user.state}</td>
+            <td>{user.city}</td>
+            <td>{user.zip}</td>
+            <td>{user.photo}</td>
+          </tr>
+        );
+      })}
+    </table>
+  );
+};
+
+// class TableList extends Component {
+//   render() {
+//     return (
+//       <div className="content">
+//         <Grid fluid>
+//           <Row>
+//             <Col md={12}>
+//               <Card
+//                 title="Striped Table with Hover"
+//                 category="Here is a subtitle for this table"
+//                 ctTableFullWidth
+//                 ctTableResponsive
+//                 content={
+//                   <Table striped hover>
+//                     <thead>
+//                       <tr>
+//                         {thArray.map((prop, key) => {
+//                           return <th key={key}>{prop}</th>;
+//                         })}
+//                       </tr>
+//                     </thead>
+//                     <tbody>
+//                       {tdArray.map((prop, key) => {
+//                         return (
+//                           <tr key={key}>
+//                             {prop.map((prop, key) => {
+//                               return <td key={key}>{prop}</td>;
+//                             })}
+//                           </tr>
+//                         );
+//                       })}
+//                     </tbody>
+//                   </Table>
+//                 }
+//               />
+//             </Col>
+//           </Row>
+//         </Grid>
+//       </div>
+//     );
+//   }
+// }
 
 export default TableList;

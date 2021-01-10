@@ -15,9 +15,14 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import { Route } from 'react-router-dom';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route } from 'react-router-dom';
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
@@ -32,3 +37,12 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <Switch>
+//       <Route path="/" render={App} />
+//     </Switch>
+//   </BrowserRouter>,
+//   document.getElementById('root')
+// );

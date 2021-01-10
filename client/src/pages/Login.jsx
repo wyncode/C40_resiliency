@@ -36,7 +36,7 @@ const Login = ({ history }) => {
   return (
     <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <h1>Request Manager</h1>
-      <Form style={{ width: 300 }} onSubmit={handleLogin}>
+      <Form style={{ width: '300' }} onSubmit={handleLogin}>
         <FormGroup>
           <ControlLabel htmlFor="email">Email Address</ControlLabel>
           <FormControl

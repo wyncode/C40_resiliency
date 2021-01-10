@@ -15,94 +15,97 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { Component } from 'react';
+import React from 'react';
+// import { Switch } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Card } from '../components/Card/Card';
 import { StatsCard } from '../components/StatsCard/StatsCard.jsx';
+// import { style } from '../variables/Variables.jsx';
 import Maps from './Maps';
 import Table from './TableList';
+// import Sidebar from '../components/Sidebar/Sidebar';
+// import AdminNavbar from '../components/Navbars/AdminNavbar';
+// import Footer from '../components/Footer/Footer';
+// import routes from '../routes';
 
 const Dashboard = ({ history }) => {
   return (
-    <div className="content">
-      <Grid fluid>
-        <Row>
-          <Col lg={3} sm={6}>
-            <StatsCard
-              bigIcon={<i className="pe-7s-drop text-info" />}
-              statsText="Water"
-              statsValue="10"
-              statsIcon={<i className="fa fa-refresh" />}
-              statsIconText="Updated now"
-            />
-          </Col>
-          <Col lg={3} sm={6}>
-            <StatsCard
-              bigIcon={<i className="pe-7s-cart text-success" />}
-              statsText="Food"
-              statsValue="8"
-              statsIcon={<i className="fa fa-refresh" />}
-              statsIconText="Updated now"
-            />
-          </Col>
-          <Col lg={3} sm={6}>
-            <StatsCard
-              bigIcon={<i className="pe-7s-notebook text-danger" />}
-              statsText="Education"
-              statsValue="3"
-              statsIcon={<i className="fa fa-refresh" />}
-              statsIconText="Updated now"
-            />
-          </Col>
-          <Col lg={3} sm={6}>
-            <StatsCard
-              bigIcon={<i className="pe-7s-bandaid text-warning" />}
-              statsText="Health"
-              statsValue="5"
-              statsIcon={<i className="fa fa-refresh" />}
-              statsIconText="Updated now"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={10}>
-            <Card
-              statsIcon="fa fa-history"
-              id="googleMap"
-              title="Request Map"
-              category="Displays Request by Location"
-              stats="Updated 3 minutes ago"
-              content={<Maps />}
-            />
-          </Col>
-        </Row>{' '}
-        <Row>
-          <Col md={12}>
-            <Card
-              statsIcon="fa fa-clock-o"
-              title="Assistance Requests"
-              category="Displays All Requests for Assistance"
-              stats="Campaign sent 2 days ago"
-              content={<Table />}
-            />{' '}
-          </Col>
-        </Row>
-      </Grid>
-    </div>
+    <Grid fluid>
+      <Row>
+        <Col lg={3} sm={6}>
+          <StatsCard
+            bigIcon={<i className="pe-7s-drop text-info" />}
+            statsText="Water"
+            statsValue="10"
+            statsIcon={<i className="fa fa-refresh" />}
+            statsIconText="Updated now"
+          />
+        </Col>
+        <Col lg={3} sm={6}>
+          <StatsCard
+            bigIcon={<i className="pe-7s-cart text-success" />}
+            statsText="Food"
+            statsValue="8"
+            statsIcon={<i className="fa fa-refresh" />}
+            statsIconText="Updated now"
+          />
+        </Col>
+        <Col lg={3} sm={6}>
+          <StatsCard
+            bigIcon={<i className="pe-7s-notebook text-danger" />}
+            statsText="Education"
+            statsValue="3"
+            statsIcon={<i className="fa fa-refresh" />}
+            statsIconText="Updated now"
+          />
+        </Col>
+        <Col lg={3} sm={6}>
+          <StatsCard
+            bigIcon={<i className="pe-7s-bandaid text-warning" />}
+            statsText="Health"
+            statsValue="5"
+            statsIcon={<i className="fa fa-refresh" />}
+            statsIconText="Updated now"
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col md={6}>
+          <Card
+            statsIcon="fa fa-history"
+            id="googleMap"
+            title="Request Map"
+            category="Displays Request by Location"
+            stats="Updated 3 minutes ago"
+            content={<Maps />}
+          />
+        </Col>
+      </Row>{' '}
+      {/* <Row>
+      <Col md={6}>
+        <Card
+          statsIcon="fa fa-history"
+          id="twillio"
+          title="Twillio"
+          category="In App Messaging"
+          stats="Updated 3 minutes ago"
+          content={<Twillio />}
+        />
+      </Col>
+    </Row>{' '} */}
+      <Row>
+        <Col md={12}>
+          <Card
+            statsIcon="fa fa-clock-o"
+            title="Assistance Requests"
+            category="Displays All Requests for Assistance"
+            stats="Campaign sent 2 days ago"
+            content={<Table />}
+          />{' '}
+        </Col>
+      </Row>
+    </Grid>
   );
 };
-
-// class Dashboard extends Component {
-// createLegend(json) {
-//   var legend = [];
-//   for (var i = 0; i < json['names'].length; i++) {
-//     var type = 'fa fa-circle text-' + json['types'][i];
-//     legend.push(<i className={type} key={i} />);
-//     legend.push(' ');
-//     legend.push(json['names'][i]);
-//   }
-//   return legend;
-// }
-// render() {
 
 export default Dashboard;
