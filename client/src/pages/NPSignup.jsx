@@ -1,11 +1,18 @@
 import React, { useState, useContext } from 'react';
-import { Grid, Form, Button } from 'react-bootstrap';
+import {
+  Grid,
+  Form,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Button
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const Signup = ({ history }) => {
-  const [formData, setFormData] = useState(null);
+const NPSignup = ({ history }) => {
+  const [formData, setFormData] = useState('');
 
   const { setCurrentUser } = useContext(AppContext);
 
@@ -13,61 +20,221 @@ const Signup = ({ history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/users', formData);
-      setCurrentUser(response.data.user);
-      sessionStorage.setItem('user', response.data);
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(formData);
+    axios
+      .post('/api/users', formData)
+      .then((res) => {
+        console.log(res.data);
+        sessionStorage.setItem('user', res.data);
+        setCurrentUser(res.data);
+        history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // e.preventDefault();
+    // try {
+    //   const response = await axios.post('/api/users', formData);
+    //   sessionStorage.setItem('user', response.data);
+    //   setCurrentUser(response.data);
+    //   history.push('/');
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
-    <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1>request Manager</h1>
-      <Form style={{ width: 300 }} onSubmit={handleSignUp}>
-        <Form.Group>
-          <Form.Label htmlFor="fullName">Full Name</Form.Label>
-          <Form.Control
-            id="fullName"
+    // <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
+    // <h1>The Resiliency Connection</h1>
+    // <form>
+    // <FormGroup>
+    // <ControlLabel>Organization Name</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Organization Name..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Position/Title</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Position/Title..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>First Name</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="First Name..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Last Name</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Last Name..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Date of Birth</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Date of Birth..."
+    //       onChange={handleChange}
+    //     />
+    // </FormGroup>
+    // <ControlLabel>E-mail</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="E-mail..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Phone Number</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Phone Number..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Street Address</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Street Address..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>City</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="City..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>State</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="State..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Zip Code</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Zip Code..."
+    //       onChange={handleChange}
+    //     />
+    // <ControlLabel>Password</ControlLabel>
+    // <FormControl
+    //       type="text"
+    //       // value={this.state.value}
+    //       placeholder="Password..."
+    //       onChange={handleChange}
+    //     />
+    // </form>
+    // <Link href="/login">
+    //   Already have an account? Log in.
+    // </Link>
+    // </Grid>
+    <React.Fragment>
+      <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
+        <h1>The Resiliency Connection</h1>
+        <form>
+          <FormGroup>
+            <ControlLabel>Organization Name</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="Organization Name..."
+              onChange={handleChange}
+            />
+            <ControlLabel>Position/Title</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="Position/Title..."
+              onChange={handleChange}
+            />
+            <ControlLabel>First Name</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="First Name..."
+              onChange={handleChange}
+            />
+            <ControlLabel>Last Name</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="Last Name..."
+              onChange={handleChange}
+            />
+            <ControlLabel>Date of Birth</ControlLabel>
+            <FormControl
+              type="text"
+              // value={this.state.value}
+              placeholder="Date of Birth..."
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <ControlLabel>E-mail</ControlLabel>
+          <FormControl
             type="text"
-            placeholder="Full Name"
-            name="name"
+            // value={this.state.value}
+            placeholder="E-mail..."
             onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email Address</Form.Label>
-          <Form.Control
-            id="email"
-            type="email"
-            placeholder="Email Address"
-            name="email"
+          <ControlLabel>Phone Number</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="Phone Number..."
             onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            id="password"
-            type="password"
-            placeholder="Password"
-            name="password"
+          <ControlLabel>Street Address</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="Street Address..."
             onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Group className="d-flex justify-content-center">
-          <Button type="submit">Login</Button>
-        </Form.Group>
-      </Form>
-      <Link className="mt-4" to="/login">
-        Already have an account? Log in.
-      </Link>
-    </Grid>
+          <ControlLabel>City</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="City..."
+            onChange={handleChange}
+          />
+          <ControlLabel>State</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="State..."
+            onChange={handleChange}
+          />
+          <ControlLabel>Zip Code</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="Zip Code..."
+            onChange={handleChange}
+          />
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            type="text"
+            // value={this.state.value}
+            placeholder="Password..."
+            onChange={handleChange}
+          />
+        </form>
+        <Link href="/login">Already have an account? Log in.</Link>
+      </Grid>
+    </React.Fragment>
   );
 };
 
-export default Signup;
+export default NPSignup;

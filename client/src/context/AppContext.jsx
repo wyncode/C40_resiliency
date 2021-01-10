@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-export const AppContext = createContext();
 
 const AppContext = createContext();
 
@@ -27,25 +26,13 @@ const AppContextProvider = ({ children }) => {
     }
   }, [setToken]);
 
-  return (
-    <AppContext.Provider
-      value={{
-        token
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
   useEffect(() => {
+    //incase the user refreshes & context is cleared
     if (user && !currentUser) {
       axios
         .get('/api/users/me', { withCredentials: true })
-        .then(({ data }) => {
-          setCurrentUser(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .then((res) => setCurrentUser(res.data))
+        .catch((error) => console.log(error));
     }
   }, [currentUser, user]);
 
