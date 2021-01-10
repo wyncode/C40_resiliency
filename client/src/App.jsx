@@ -7,7 +7,6 @@ import Maps from './views/Maps';
 import TableList from './views/TableList';
 import UserProfile from './views/UserProfile';
 import Login from './pages/Login';
-import UserSignupRequest from './pages/UserSignupRequest';
 import UserSignupInfo from './pages/UserSignupInfo';
 import NPSignup from './pages/NPSignup';
 import { AppContextProvider } from './context/AppContext';
@@ -26,13 +25,6 @@ function App() {
           <Route exact path="/npsignup" component={NPSignup} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/login" component={Login} />
-
-          <Route
-            exact
-            path="/usersignuprequest"
-            component={UserSignupRequest}
-          />
-
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/updatepassword" component={UpdatePassword} />
           <Route exact path="/userhome" component={UserHome} />
