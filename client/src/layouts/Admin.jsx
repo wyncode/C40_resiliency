@@ -23,7 +23,7 @@ import AdminNavbar from '../components/Navbars/AdminNavbar';
 import Footer from '../components/Footer/Footer';
 import Sidebar from '../components/Sidebar/Sidebar';
 
-import { style } from '../variables/Variables.jsx';
+import * as VariablesJsx from '../variables/Variables.jsx';
 
 import routes from '../routes';
 
@@ -106,7 +106,10 @@ class Admin extends Component {
   render() {
     return (
       <div className="wrapper">
-        <NotificationSystem ref="notificationSystem" style={style} />
+        <NotificationSystem
+          ref="notificationSystem"
+          style={VariablesJsx.style}
+        />
         <Sidebar
           {...this.props}
           routes={routes}
