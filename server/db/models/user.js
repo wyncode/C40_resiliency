@@ -4,6 +4,14 @@ const mongoose = require('mongoose'),
   jwt = require('jsonwebtoken'),
   Request = require('./request');
 
+const NodeGeocoder = require('node-geocoder');
+
+const options = {
+  provider: 'openstreetmap'
+};
+
+var geocoder = NodeGeocoder(options);
+
 const userSchema = new mongoose.Schema(
   {
     orgName: {
@@ -95,12 +103,42 @@ const userSchema = new mongoose.Schema(
 
     logo: {
       type: String
+    },
+    latitude: {
+      type: Number
+    },
+    longitude: {
+      type: Number
+    },
+    aidType: {
+      type: [String],
+      required: true,
+      enum: ['water', 'food', 'health services', "children's education"]
     }
   },
   {
     timestamps: true
   }
 );
+
+userSchema.pre('save', async function (next) {
+  const request = this;
+  if (
+    request.isModified('address') ||
+    request.isModified('city') ||
+    request.isModified('state') ||
+    request.isModified('zip')
+  ) {
+    await geocoder.geocode(
+      `${request.address} ${request.city} ${request.state} ${request.zip}`,
+      async (err, res) => {
+        console.log(res);
+        request.latitude = await res[0].latitude;
+        request.longitude = await res[0].longitude;
+      }
+    );
+  }
+});
 
 /**
  * Create a virtual relation between User and request.

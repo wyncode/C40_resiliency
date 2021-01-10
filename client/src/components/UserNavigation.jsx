@@ -17,7 +17,7 @@ const Navigation = () => {
   const filterCompleted = (query) => {
     setCurrentFilter(query);
   };
-
+  //do we have a hamburger nav bar installed below?
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={Link} to="/">

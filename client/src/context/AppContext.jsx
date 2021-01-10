@@ -9,10 +9,22 @@ const AppContextProvider = ({ children }) => {
   const [filteredRequests, setFilteredRequests] = useState([]);
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState(null);
+  const [token, setToken] = useState('');
 
   const [loading, setLoading] = useState(false);
 
   const user = sessionStorage.getItem('user');
+  useEffect(() => {
+    const getToken = async () => {
+      const resp = await axios.get('/GoogleAPI');
+      setToken(resp.data);
+    };
+    try {
+      getToken();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [setToken]);
 
   useEffect(() => {
     //incase the user refreshes & context is cleared

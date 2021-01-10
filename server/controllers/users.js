@@ -29,6 +29,9 @@ exports.fetchAllUsers = async (req, res) => {
  */
 exports.createUser = async (req, res) => {
   const {
+    orgName,
+    positionTitle,
+    aidType,
     firstName,
     lastName,
     dob,
@@ -42,6 +45,9 @@ exports.createUser = async (req, res) => {
   } = req.body;
   try {
     const user = new User({
+      orgName,
+      positionTitle,
+      aidType,
       firstName,
       lastName,
       dob,
@@ -60,6 +66,7 @@ exports.createUser = async (req, res) => {
       sameSite: 'Strict',
       secure: process.env.NODE_ENV !== 'production' ? false : true
     });
+    user.save();
     res.status(201).json(user);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
@@ -103,7 +110,7 @@ exports.requestPasswordReset = async (req, res) => {
     console.log('HOW ABOUT HERE', email);
     if (!user) throw new Error('no user found');
     const token = jwt.sign(
-      { _id: user._id.toString(), name: user.firstName },
+      { _id: user._id.toString(), name: user.firstName + ' ' + user.lastName },
       process.env.JWT_SECRET,
       {
         expiresIn: '10m'

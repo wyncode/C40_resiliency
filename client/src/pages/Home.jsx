@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -16,9 +17,9 @@ function Home() {
       <h4>
         I need assistance in the form of Food, Water, Education and/or Health
       </h4>
-      <Button href="/usersignupinfo">Click Me</Button>
+      <Link className="btn btn-primary" to="/usersignupinfo">Click Me</Link>
       <h4>I am an NGO and can offer assistance</h4>
-      <Button href="/npsignup">Click Me</Button>
+      <Link className="btn btn-primary" to=="/npsignup">Click Me</Link>
     </div>
   );
 }
