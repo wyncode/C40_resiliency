@@ -5,7 +5,8 @@ const UserHome = () => {
   return (
     <div>
       <Navigation />
-      <h1>Your request has been submitted</h1>
+      {/* integrate Twilio here */}
+      {/* include link to profile */}
     </div>
   );
 };

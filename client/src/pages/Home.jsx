@@ -6,7 +6,6 @@ function Home() {
   return (
     <div>
       <h2>Resiliency Connection</h2>
-      <p>Welcome to Resiliency Connection. We are glad you are here.</p>
 
       <p>
         Welcome to Resiliency Connection. We are glad you are here. Please let
@@ -17,9 +16,13 @@ function Home() {
       <h4>
         I need assistance in the form of Food, Water, Education and/or Health
       </h4>
-      <Link className="btn btn-primary" to="/usersignupinfo">Click Me</Link>
+      <Link className="btn btn-primary" to="/usersignupinfo">
+        Click Me
+      </Link>
       <h4>I am an NGO and can offer assistance</h4>
-      <Link className="btn btn-primary" to=="/npsignup">Click Me</Link>
+      <Link className="btn btn-primary" to="/npsignup">
+        Click Me
+      </Link>
     </div>
   );
 }

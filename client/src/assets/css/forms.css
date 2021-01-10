@@ -1,7 +1,3 @@
-/* .fullscreen {
-  height: 100vh;
-} */
-
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
 * {
@@ -29,21 +25,19 @@ span {
 
 body,
 html,
-/* .App,
-#root, */
-auth-wrapper {
+.auth-wrapper {
   width: 100%;
   height: 100%;
 }
 
-auth-wrapper {
+.auth-wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: left;
 }
 
-auth-inner {
+.auth-inner {
   width: 450px;
   margin: auto;
   background: #ffffff;
@@ -53,23 +47,23 @@ auth-inner {
   transition: all 0.3s;
 }
 
-auth-wrapper form-control:focus {
+.auth-wrapper .form-control:focus {
   border-color: #167bff;
   box-shadow: none;
 }
 
-auth-wrapper h3 {
+.auth-wrapper h3 {
   text-align: center;
   margin: 0;
   line-height: 1;
   padding-bottom: 20px;
 }
 
-custom-control-label {
+.control-label {
   font-weight: 400;
 }
 
-forgot-password {
+.forgot-password {
   text-align: right;
   font-size: 13px;
   padding-top: 10px;
@@ -77,6 +71,6 @@ forgot-password {
   margin: 0;
 }
 
-forgot-password {
+.forgot-password {
   color: #167bff;
 }

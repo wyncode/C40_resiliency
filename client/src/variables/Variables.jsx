@@ -264,74 +264,26 @@ var style = {
 // For tables
 
 // const thArray = [
-//   {
-//     dataField: "firstName",
-//     text: "First Name",
-//   },
-//   {
-//     dataField: "lastname",
-//     text: "Last Name",
-//     sort: true,
-//   },
-//   {
-//     dataField: "aidType",
-//     text: "Aid Type",
-//     sort: true,
-//   },
-//   {
-//     dataField: "email",
-//     text: "E-Mail",
-//   },
-//   {
-//     dataField: "phone",
-//     text: "Phone",
-//   },
-//   {
-//     dataField: "address",
-//     text: "Address",
-//   },
-//   {
-//     dataField: "city",
-//     text: "City",
-//     sort: true,
-//   },
-//   {
-//     dataField: "state",
-//     text: "State",
-//     sort: true,
-//   },
-//   {
-//     dataField: "zip",
-//     text: "Zip Code",
-//     sort: true,
-//   },
-//   {
-//     dataField: "photo",
-//     text: "Photo",
-//   },
+//   'ID',
+//   'First Name',
+//   'Last Name',
+//   'Aid Type',
+//   'Email',
+//   'Phone',
+//   'Address',
+//   'City',
+//   'State',
+//   'Zip',
+//   'Photo'
 // ];
-
-const thArray = [
-  'ID',
-  'First Name',
-  'Last Name',
-  'Aid Type',
-  'Email',
-  'Phone',
-  'Address',
-  'City',
-  'State',
-  'Zip',
-  'Photo'
-];
-const tdArray = [
-  ['1', 'Dakota Rice', '$36,738', 'Niger', 'Oud-Turnhout'],
-  ['2', 'Minerva Hooper', '$23,789', 'Curaçao', 'Sinaai-Waas'],
-  ['3', 'Sage Rodriguez', '$56,142', 'Netherlands', 'Baileux'],
-  ['4', 'Philip Chaney', '$38,735', 'Korea, South', 'Overland Park'],
-  ['5', 'Doris Greene', '$63,542', 'Malawi', 'Feldkirchen in Kärnten'],
-  ['6', 'Mason Porter', '$78,615', 'Chile', 'Gloucester']
-];
+// const tdArray = [
+//   ['1', 'Dakota Rice', '$36,738', 'Niger', 'Oud-Turnhout'],
+//   ['2', 'Minerva Hooper', '$23,789', 'Curaçao', 'Sinaai-Waas'],
+//   ['3', 'Sage Rodriguez', '$56,142', 'Netherlands', 'Baileux'],
+//   ['4', 'Philip Chaney', '$38,735', 'Korea, South', 'Overland Park'],
+//   ['5', 'Doris Greene', '$63,542', 'Malawi', 'Feldkirchen in Kärnten'],
+//   ['6', 'Mason Porter', '$78,615', 'Chile', 'Gloucester']
+// ];
 // request.find....
 
 // For icons
@@ -542,7 +494,7 @@ const iconsArray = [
 ];
 
 module.exports = {
-  thArray,
-  tdArray, // For tables (TableList view)
+  // thArray,
+  // tdArray, // For tables (TableList view)
   iconsArray // For icons (Icons view)
 };
