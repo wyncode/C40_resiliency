@@ -22,6 +22,7 @@ const NPSignup = ({ history }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    formData.admin = true;
     console.log(formData);
     axios
       .post('/api/users', formData)

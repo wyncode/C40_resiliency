@@ -5,10 +5,13 @@ function Home() {
   return (
     <div>
       <h2>Resiliency Connection</h2>
-      <h4>Welcome to Resiliency Connection. We are glad you are here.</h4>
-      <h4>Please let us know if you are here because you are in need</h4>
-      <h4>of assistance, or if you are here to offer assistance to those</h4>
-      <h4>in need.</h4>
+      <p>Welcome to Resiliency Connection. We are glad you are here.</p>
+
+      <p>
+        Welcome to Resiliency Connection. We are glad you are here. Please let
+        us know if you are here because you are in need of assistance, or if you
+        are here to offer assistance to those in need.
+      </p>
 
       <h4>
         I need assistance in the form of Food, Water, Education and/or Health

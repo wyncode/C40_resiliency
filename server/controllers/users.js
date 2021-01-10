@@ -8,6 +8,20 @@ const User = require('../db/models/user'),
 // } = require('../emails/');
 
 /**
+ * Admin route fetchn all user
+ * @param {}
+ * @return {user}
+ */
+exports.fetchAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
+  }
+};
+
+/**
  * Create a user
  * @param {firstName, lastName, dob, email, password, phone, address, city,
  * state, zip}
