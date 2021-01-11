@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   Grid,
   Form,
@@ -21,6 +21,15 @@ const UserSignup = ({ history }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      address: userAddress?.split(',')[0].trim(),
+      city: userAddress?.split(',')[1].trim(),
+      state: userAddress?.split(',')[3].trim(),
+      zip: userAddress?.split(',')[2].trim()
+    });
+  }, [userAddress]);
 
   const handleSignUp = (e) => {
     e.preventDefault();

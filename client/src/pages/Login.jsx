@@ -14,7 +14,7 @@ import '../assets/css/forms.css';
 const Login = ({ history }) => {
   const [formData, setFormData] = useState(null);
 
-  const { setCurrentUser } = useContext(AppContext);
+  const { setCurrentUser, currentUser } = useContext(AppContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,14 +24,15 @@ const Login = ({ history }) => {
     e.preventDefault();
     try {
       const response = await axios.post('/api/users/login', formData);
+      console.log(response.data);
       setCurrentUser(response.data);
       sessionStorage.setItem('user', response.data);
-      history.push('/userhome');
-      // if (user === admin) {
-      //   history.push('/dashboard');
-      // } else {
-      //   history.push('/userhome');
-      // }
+      // history.push('/userhome');
+      if (response.data.admin === true) {
+        history.push('/dashboard');
+      } else {
+        history.push('/userhome');
+      }
     } catch (error) {
       console.log(error);
     }

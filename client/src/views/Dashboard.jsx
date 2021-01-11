@@ -23,6 +23,7 @@ import { StatsCard } from '../components/StatsCard/StatsCard.jsx';
 // import { style } from '../variables/Variables.jsx';
 import Maps from './Maps';
 import Table from './TableList';
+import Home2 from '../views/Map/Home2';
 // import Sidebar from '../components/Sidebar/Sidebar';
 // import AdminNavbar from '../components/Navbars/AdminNavbar';
 // import Footer from '../components/Footer/Footer';
@@ -77,7 +78,7 @@ const Dashboard = ({ history }) => {
             title="Request Map"
             category="Displays Request by Location"
             stats="Updated 3 minutes ago"
-            content={<Maps />}
+            content={<Home2 />}
           />
         </Col>
       </Row>{' '}

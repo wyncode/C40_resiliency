@@ -1,11 +1,11 @@
 const User = require('../db/models/user'),
   cloudinary = require('cloudinary').v2,
-  jwt = require('jsonwebtoken');
-// {
-//   sendWelcomeEmail,
-//   sendCancellationEmail,
-//   forgotPasswordEmail
-// } = require('../emails/');
+  jwt = require('jsonwebtoken'),
+  {
+    sendWelcomeEmail,
+    sendCancellationEmail,
+    forgotPasswordEmail
+  } = require('../emails/');
 
 /**
  * Admin route fetch all user
@@ -68,7 +68,7 @@ exports.createUser = async (req, res) => {
       photo
     });
     const token = await user.generateAuthToken();
-    // sendWelcomeEmail(user.email, user.firstName);
+    sendWelcomeEmail(user.email, user.firstName);
     res.cookie('jwt', token, {
       httpOnly: true,
       sameSite: 'Strict',
@@ -226,7 +226,7 @@ exports.logoutAllDevices = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     await req.user.remove();
-    // sendCancellationEmail(req.user.email, req.user.firstName);
+    sendCancellationEmail(req.user.email, req.user.firstName);
     res.clearCookie('jwt');
     res.json({ message: 'user deleted' });
   } catch (error) {

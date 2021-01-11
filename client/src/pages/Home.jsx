@@ -20,7 +20,7 @@ function Home() {
         Click Me
       </Link>
       <h4>I am an NGO and can offer assistance</h4>
-      <Link className="btn btn-primary" to="/ngoignup">
+      <Link className="btn btn-primary" to="/ngosignup">
         Click Me
       </Link>
     </div>
