@@ -127,6 +127,29 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// userSchema.pre('save', async function (next) {
+//   const request = this;
+//   if (
+//     request.isModified('address') ||
+//     request.isModified('city') ||
+//     request.isModified('state') ||
+//     request.isModified('zip')
+//   ) {
+//     const res = await geocoder.geocode(
+//       {
+//         address: request.address,
+//         state: request.state,
+//         zipcode: request.zip
+//       },
+//       async (err, res) => {
+//         request.latitude = res[0].latitude;
+//         request.longitude = res[0].longitude;
+//       }
+//     );
+//   }
+//   next();
+// });
+
 userSchema.pre('save', async function (next) {
   const request = this;
   if (
@@ -135,19 +158,16 @@ userSchema.pre('save', async function (next) {
     request.isModified('state') ||
     request.isModified('zip')
   ) {
-    const res = await geocoder.geocode(
-      {
-        address: request.address,
-        state: request.state,
-        zipcode: request.zip
-      },
+    await geocoder.geocode(
+      `${request.address} ${request.city} ${request.state} ${request.zip}`,
       async (err, res) => {
-        request.latitude = res[0].latitude;
+        console.log(res);
+        request.latitude = await res[0].latitude;
+        request.longitude = await res[0].longitude;
       }
     );
   }
 });
-
 /**
  * Create a virtual relation between User and request.
  */
