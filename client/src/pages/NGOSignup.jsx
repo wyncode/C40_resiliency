@@ -23,27 +23,42 @@ const NPSignup = ({ history }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    setFormData((prev) => ({
-      ...prev,
-      admin: true
-    }));
-    console.log(formData);
-    axios
-      .post('/api/users', formData)
+    let form = e.target;
+    let formData = new FormData(form);
+
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(Object.fromEntries(formData))
+    })
+      .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
-        sessionStorage.setItem('user', res.data);
-        setCurrentUser(res.data);
-        history.push('/');
+        sessionStorage.setItem('user', res);
+        setCurrentUser(res);
+        history.push('/dashboard');
+        form.reset();
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => console.log(err));
+
+    // axios
+    //   .post('/api/users', formData)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     sessionStorage.setItem('user', res.data);
+    //     setCurrentUser(res.data);
+    //     history.push('/dashboard');
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
     <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <Form className="auth-wrapper">
+      <Form className="auth-wrapper" onSubmit={handleSignUp}>
         <div className="auth-inner">
           <h3>NGO Registration</h3>
 
@@ -58,9 +73,10 @@ const NPSignup = ({ history }) => {
                 onChange={handleChange}
               />
             </div>
+            <input type="hidden" name="admin" value="true" />
             <div className="form-group">
               <label>File</label>
-              <input type="file" name="logo" onChange={handleChange} />
+              {/* <input type="file" name="logo" onChange={handleChange} /> */}
               Upload organization logo here.
             </div>
 
@@ -193,13 +209,14 @@ const NPSignup = ({ history }) => {
             </Checkbox>
           </FormGroup>
 
-          <Link
-            onClick={handleSignUp}
+          <Button
+            type="submit"
+            // onClick={handleSignUp}
             className="btn btn-primary btn-block"
-            to="/login"
+            // to="/login"
           >
             Register
-          </Link>
+          </Button>
           <p className="forgot-password">
             Already registered? <Link to="/login">Login</Link>
           </p>

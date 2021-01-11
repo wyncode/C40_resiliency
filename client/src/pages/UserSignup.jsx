@@ -30,7 +30,7 @@ const UserSignup = ({ history }) => {
         console.log(res.data);
         sessionStorage.setItem('user', res.data);
         setCurrentUser(res.data);
-        history.push('/');
+        history.push('/userhome');
       })
       .catch((error) => {
         console.log(error);
@@ -48,18 +48,32 @@ const UserSignup = ({ history }) => {
           </p>
           <FormGroup>
             <p>Select one or more categories below...</p>
-            <Radio onChange={handleChange} name="radioGroup">
-              Water
-            </Radio>{' '}
-            <Radio onChange={handleChange} name="radioGroup">
-              Food
-            </Radio>{' '}
-            <Radio onChange={handleChange} name="radioGroup">
-              Health Services
-            </Radio>{' '}
-            <Radio onChange={handleChange} name="radioGroup">
-              Childrens Education
-            </Radio>
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="male"
+              name="aidType"
+              value="water"
+            />
+            <label for="male">Male</label>
+            <br />
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="female"
+              name="aidType"
+              value="food"
+            />
+            <label for="female">Female</label>
+            <br />
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="other"
+              name="aidType"
+              value="health services"
+            />
+            <label for="other">Other</label>
           </FormGroup>
           <FormGroup>
             <FormGroup controlId="formControlsTextarea">
