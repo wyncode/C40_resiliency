@@ -28,6 +28,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import AdminNavbar from '../components/Navbars/AdminNavbar';
 // import Footer from '../components/Footer/Footer';
 import routes from '../routes';
+import Twilio from '../views/Twilio';
 
 const Dashboard = ({ history }) => {
   return (
@@ -85,27 +86,20 @@ const Dashboard = ({ history }) => {
             />
           </Col>
         </Row>{' '}
-        {/* <Row>
-      <Col md={6}>
-        <Card
-          statsIcon="fa fa-history"
-          id="twillio"
-          title="Twillio"
-          category="In App Messaging"
-          stats="Updated 3 minutes ago"
-          content={<Twillio />}
-        />
-      </Col>
-    </Row>{' '} */}
+        <Row>
+          <Col md={6}>
+            <Card
+              id="twilio"
+              title="Twilio"
+              category="In App Messaging"
+              content="Twilio will live here"
+              // {<Twilio />}
+            />
+          </Col>
+        </Row>{' '}
         <Row>
           <Col md={12}>
-            <Card
-              statsIcon="fa fa-clock-o"
-              title="Assistance Requests"
-              category="Displays All Requests for Assistance"
-              stats="Campaign sent 2 days ago"
-              content={<Table />}
-            />{' '}
+            <Card content={<Table />} />{' '}
           </Col>
         </Row>
       </Grid>
