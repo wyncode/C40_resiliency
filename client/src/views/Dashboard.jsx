@@ -23,65 +23,69 @@ import { StatsCard } from '../components/StatsCard/StatsCard.jsx';
 // import { style } from '../variables/Variables.jsx';
 import Maps from './Maps';
 import Table from './TableList';
-// import Sidebar from '../components/Sidebar/Sidebar';
-// import AdminNavbar from '../components/Navbars/AdminNavbar';
+import Home2 from '../views/Map/Home2';
+import Sidebar from '../components/Sidebar/Sidebar';
+import AdminNavbar from '../components/Navbars/AdminNavbar';
 // import Footer from '../components/Footer/Footer';
-// import routes from '../routes';
+import routes from '../routes';
 
 const Dashboard = ({ history }) => {
   return (
-    <Grid fluid>
-      <Row>
-        <Col lg={3} sm={6}>
-          <StatsCard
-            bigIcon={<i className="pe-7s-drop text-info" />}
-            statsText="Water"
-            statsValue="10"
-            statsIcon={<i className="fa fa-refresh" />}
-            statsIconText="Updated now"
-          />
-        </Col>
-        <Col lg={3} sm={6}>
-          <StatsCard
-            bigIcon={<i className="pe-7s-cart text-success" />}
-            statsText="Food"
-            statsValue="8"
-            statsIcon={<i className="fa fa-refresh" />}
-            statsIconText="Updated now"
-          />
-        </Col>
-        <Col lg={3} sm={6}>
-          <StatsCard
-            bigIcon={<i className="pe-7s-notebook text-danger" />}
-            statsText="Education"
-            statsValue="3"
-            statsIcon={<i className="fa fa-refresh" />}
-            statsIconText="Updated now"
-          />
-        </Col>
-        <Col lg={3} sm={6}>
-          <StatsCard
-            bigIcon={<i className="pe-7s-bandaid text-warning" />}
-            statsText="Health"
-            statsValue="5"
-            statsIcon={<i className="fa fa-refresh" />}
-            statsIconText="Updated now"
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col md={6}>
-          <Card
-            statsIcon="fa fa-history"
-            id="googleMap"
-            title="Request Map"
-            category="Displays Request by Location"
-            stats="Updated 3 minutes ago"
-            content={<Maps />}
-          />
-        </Col>
-      </Row>{' '}
-      {/* <Row>
+    <>
+      <AdminNavbar />
+      <Sidebar routes={routes} />
+      <Grid fluid style={{ marginLeft: '40rem' }}>
+        <Row>
+          <Col lg={3} sm={6}>
+            <StatsCard
+              bigIcon={<i className="pe-7s-drop text-info" />}
+              statsText="Water"
+              statsValue="10"
+              statsIcon={<i className="fa fa-refresh" />}
+              statsIconText="Updated now"
+            />
+          </Col>
+          <Col lg={3} sm={6}>
+            <StatsCard
+              bigIcon={<i className="pe-7s-cart text-success" />}
+              statsText="Food"
+              statsValue="8"
+              statsIcon={<i className="fa fa-refresh" />}
+              statsIconText="Updated now"
+            />
+          </Col>
+          <Col lg={3} sm={6}>
+            <StatsCard
+              bigIcon={<i className="pe-7s-notebook text-danger" />}
+              statsText="Education"
+              statsValue="3"
+              statsIcon={<i className="fa fa-refresh" />}
+              statsIconText="Updated now"
+            />
+          </Col>
+          <Col lg={3} sm={6}>
+            <StatsCard
+              bigIcon={<i className="pe-7s-bandaid text-warning" />}
+              statsText="Health"
+              statsValue="5"
+              statsIcon={<i className="fa fa-refresh" />}
+              statsIconText="Updated now"
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Card
+              statsIcon="fa fa-history"
+              id="googleMap"
+              title="Request Map"
+              category="Displays Request by Location"
+              stats="Updated 3 minutes ago"
+              content={<Home2 />}
+            />
+          </Col>
+        </Row>{' '}
+        {/* <Row>
       <Col md={6}>
         <Card
           statsIcon="fa fa-history"
@@ -93,18 +97,19 @@ const Dashboard = ({ history }) => {
         />
       </Col>
     </Row>{' '} */}
-      <Row>
-        <Col md={12}>
-          <Card
-            statsIcon="fa fa-clock-o"
-            title="Assistance Requests"
-            category="Displays All Requests for Assistance"
-            stats="Campaign sent 2 days ago"
-            content={<Table />}
-          />{' '}
-        </Col>
-      </Row>
-    </Grid>
+        <Row>
+          <Col md={12}>
+            <Card
+              statsIcon="fa fa-clock-o"
+              title="Assistance Requests"
+              category="Displays All Requests for Assistance"
+              stats="Campaign sent 2 days ago"
+              content={<Table />}
+            />{' '}
+          </Col>
+        </Row>
+      </Grid>
+    </>
   );
 };
 
