@@ -46,7 +46,6 @@ exports.createUser = async (req, res) => {
     zip,
     logo,
     photo
-    admin
   } = req.body;
   try {
     const user = new User({
@@ -67,7 +66,6 @@ exports.createUser = async (req, res) => {
       zip,
       logo,
       photo
-      admin
     });
     const token = await user.generateAuthToken();
     // sendWelcomeEmail(user.email, user.firstName);
