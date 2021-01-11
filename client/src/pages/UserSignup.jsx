@@ -81,10 +81,9 @@ const UserSignup = ({ history }) => {
               type="radio"
               id="health"
               name="aidType"
-              value="health"
+              value="health services"
             />
-            <label for="health">Health</label>
-            <br />
+            <label for="heath">Health Services</label>
           </FormGroup>
           <FormGroup>
             <FormGroup controlId="formControlsTextarea">
