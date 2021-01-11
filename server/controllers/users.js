@@ -29,6 +29,7 @@ exports.fetchAllUsers = async (req, res) => {
  */
 exports.createUser = async (req, res) => {
   const {
+    admin,
     orgName,
     positionTitle,
     aidType,
@@ -49,6 +50,7 @@ exports.createUser = async (req, res) => {
   try {
     const user = new User({
       orgName,
+      admin,
       positionTitle,
       aidType,
       aidDesc,
