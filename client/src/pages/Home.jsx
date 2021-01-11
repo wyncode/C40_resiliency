@@ -16,12 +16,12 @@ function Home() {
       <h4>
         I need assistance in the form of Food, Water, Education and/or Health
       </h4>
-      <Link className="btn btn-primary" to="/usersignupinfo">
-        Click Me
+      <Link className="btn btn-primary" to="/usersignup">
+        Receive Assistance
       </Link>
       <h4>I am an NGO and can offer assistance</h4>
       <Link className="btn btn-primary" to="/npsignup">
-        Click Me
+        Share Assistance
       </Link>
     </div>
   );

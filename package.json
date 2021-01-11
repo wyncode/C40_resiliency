@@ -4,6 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/react": "^6.1.11",
+    "babel-loader": "^8.2.2",
     "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
     "husky": "^4.3.5",
@@ -47,7 +53,9 @@
     "prettier": "prettier '*/**/*.js' --write",
     "heroku-postbuild": "cd client && yarn && yarn run build",
     "test:local": "env-cmd -r ./config/test.env jest --runInBand --verbose",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "testEnvironment": "node"
