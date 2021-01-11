@@ -270,6 +270,7 @@ class Map extends Component {
               if (user.latitude) {
                 return (
                   <Marker
+                    key={user._id}
                     name={'Dolores park'}
                     draggable={true}
                     onDragEnd={this.onMarkerDragEnd}

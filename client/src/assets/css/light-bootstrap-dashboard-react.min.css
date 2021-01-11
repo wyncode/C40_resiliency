@@ -1762,7 +1762,7 @@ fieldset[disabled] .form-control {
   font-size: 16px;
 }
 .navbar.fixed {
-  /* width: calc(100% - $sidebar-width); */
+  width: calc(100vw - 260px);
   right: 0;
   left: auto;
   border-radius: 0;
@@ -3643,7 +3643,7 @@ fieldset[disabled] .form-control {
     display: none;
   }
   .navbar-fixed-top {
-    -webkit-backface-visibility: hidden;
+    /* -webkit-backface-visibility: hidden; */
   }
   #bodyClick {
     height: 100%;
