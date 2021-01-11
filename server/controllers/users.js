@@ -68,7 +68,7 @@ exports.createUser = async (req, res) => {
       photo
     });
     const token = await user.generateAuthToken();
-    sendWelcomeEmail(user.email, user.firstName);
+    // sendWelcomeEmail(user.email, user.firstName);
     res.cookie('jwt', token, {
       httpOnly: true,
       sameSite: 'Strict',
@@ -99,6 +99,7 @@ exports.loginUser = async (req, res) => {
     });
     res.json(user);
   } catch (e) {
+    console.error(e.name + ': ' + e.message);
     res.status(400).json({ error: e.toString() });
   }
 };

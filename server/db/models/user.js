@@ -135,12 +135,14 @@ userSchema.pre('save', async function (next) {
     request.isModified('state') ||
     request.isModified('zip')
   ) {
-    await geocoder.geocode(
-      `${request.address} ${request.city} ${request.state} ${request.zip}`,
+    const res = await geocoder.geocode(
+      {
+        address: request.address,
+        state: request.state,
+        zipcode: request.zip
+      },
       async (err, res) => {
-        console.log(res);
-        request.latitude = await res[0].latitude;
-        request.longitude = await res[0].longitude;
+        request.latitude = res[0].latitude;
       }
     );
   }
