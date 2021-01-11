@@ -16,24 +16,30 @@ const NPSignup = ({ history }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    // formData.admin = true;
-    console.log(formData);
-    axios
-      .post('/api/users/', formData)
+    let form = e.target;
+    let formData = new FormData(form);
+
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(Object.fromEntries(formData))
+    })
+      .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
-        sessionStorage.setItem('user', res.data);
-        setCurrentUser(res.data);
-        history.push('/login');
+        sessionStorage.setItem('user', res);
+        setCurrentUser(res);
+        history.push('/dashboard');
+        form.reset();
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => console.log(err));
   };
 
   return (
     <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <Form className="auth-wrapper">
+      <Form className="auth-wrapper" onSubmit={handleSignUp}>
         <div className="auth-inner">
           <h3>NGO Registration</h3>
 
@@ -48,9 +54,10 @@ const NPSignup = ({ history }) => {
                 onChange={handleChange}
               />
             </div>
+            <input type="hidden" name="admin" value="true" />
             <div className="form-group">
               <label>File</label>
-              <input type="file" name="photo" />
+              {/* <input type="file" name="logo" onChange={handleChange} /> */}
               Upload organization logo here.
             </div>
 
@@ -72,6 +79,7 @@ const NPSignup = ({ history }) => {
                 name="lastName"
                 className="form-control"
                 placeholder="Last Name"
+                onChange={handleChange}
               />
             </div>
 
@@ -82,6 +90,7 @@ const NPSignup = ({ history }) => {
                 name="positionTitle"
                 className="form-control"
                 placeholder="What is your position or title?"
+                onChange={handleChange}
               />
             </div>
 
@@ -102,6 +111,7 @@ const NPSignup = ({ history }) => {
                 name="email"
                 className="form-control"
                 placeholder="Enter email"
+                onChange={handleChange}
               />
             </div>
 
@@ -112,6 +122,7 @@ const NPSignup = ({ history }) => {
                 name="phone"
                 className="form-control"
                 placeholder="Phone Number"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -121,6 +132,7 @@ const NPSignup = ({ history }) => {
                 name="address"
                 className="form-control"
                 placeholder="Your org's street address"
+                onChange={handleChange}
               />
             </div>
 
@@ -151,6 +163,7 @@ const NPSignup = ({ history }) => {
                 name="zip"
                 className="form-control"
                 placeholder="Zip Code"
+                onChange={handleChange}
               />
             </div>
 
@@ -161,6 +174,7 @@ const NPSignup = ({ history }) => {
                 name="password"
                 className="form-control"
                 placeholder="Enter password"
+                onChange={handleChange}
                 help="Password must be 8 characters"
               />
             </div>
@@ -173,15 +187,16 @@ const NPSignup = ({ history }) => {
             </Checkbox>
           </FormGroup>
 
-          <Link
-            onClick={handleSignUp}
+          <Button
+            type="submit"
+            // onClick={handleSignUp}
             className="btn btn-primary btn-block"
-            to="/login"
+            // to="/login"
           >
             Register
-          </Link>
+          </Button>
           <p className="forgot-password">
-            Already registered <a href="#">sign in?</a>
+            Already registered? <Link to="/login">Login</Link>
           </p>
         </div>
       </Form>
