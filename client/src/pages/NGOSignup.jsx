@@ -1,12 +1,5 @@
 import React, { useState, useContext } from 'react';
-import {
-  Grid,
-  Form,
-  FormGroup,
-  Checkbox,
-  FieldGroup,
-  Button
-} from 'react-bootstrap';
+import { Grid, Form, FormGroup, Checkbox } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
@@ -42,18 +35,6 @@ const NPSignup = ({ history }) => {
         form.reset();
       })
       .catch((err) => console.log(err));
-
-    // axios
-    //   .post('/api/users', formData)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     sessionStorage.setItem('user', res.data);
-    //     setCurrentUser(res.data);
-    //     history.push('/dashboard');
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   return (
@@ -106,7 +87,7 @@ const NPSignup = ({ history }) => {
               <label>Title/Position</label>
               <input
                 type="text"
-                name="titlePosition"
+                name="positionTitle"
                 className="form-control"
                 placeholder="What is your position or title?"
                 onChange={handleChange}
@@ -120,7 +101,6 @@ const NPSignup = ({ history }) => {
                 name="dob"
                 className="form-control"
                 placeholder="dob"
-                onChange={handleChange}
               />
             </div>
 
@@ -163,7 +143,6 @@ const NPSignup = ({ history }) => {
                 name="city"
                 className="form-control"
                 placeholder="City"
-                onChange={handleChange}
               />
             </div>
 
@@ -174,7 +153,6 @@ const NPSignup = ({ history }) => {
                 name="state"
                 className="form-control"
                 placeholder="State"
-                onChange={handleChange}
               />
             </div>
 
@@ -225,4 +203,5 @@ const NPSignup = ({ history }) => {
     </Grid>
   );
 };
+
 export default NPSignup;
