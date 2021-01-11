@@ -19,7 +19,7 @@ const UserSignup = ({ history }) => {
   const { setCurrentUser, userAddress } = useContext(AppContext);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value, admin: false });
   };
   useEffect(() => {
     setFormData({
@@ -223,6 +223,7 @@ const UserSignup = ({ history }) => {
                 onChange={handleChange}
               />
             </div>
+            <input type="hidden" name="admin" value="false" />
           </FormGroup>
 
           <Link
