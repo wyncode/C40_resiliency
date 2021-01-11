@@ -8,7 +8,7 @@ const User = require('../db/models/user'),
 // } = require('../emails/');
 
 /**
- * Admin route fetchn all user
+ * Admin route fetch all user
  * @param {}
  * @return {user}
  */
@@ -29,9 +29,11 @@ exports.fetchAllUsers = async (req, res) => {
  */
 exports.createUser = async (req, res) => {
   const {
+    admin,
     orgName,
     positionTitle,
     aidType,
+    aidDesc,
     firstName,
     lastName,
     dob,
@@ -42,13 +44,17 @@ exports.createUser = async (req, res) => {
     city,
     state,
     zip,
+    logo,
+    photo
     admin
   } = req.body;
   try {
     const user = new User({
       orgName,
+      admin,
       positionTitle,
       aidType,
+      aidDesc,
       firstName,
       lastName,
       dob,
@@ -59,6 +65,8 @@ exports.createUser = async (req, res) => {
       city,
       state,
       zip,
+      logo,
+      photo
       admin
     });
     const token = await user.generateAuthToken();
@@ -142,7 +150,7 @@ exports.passwordRedirect = async (req, res) => {
       maxAge: 600000,
       sameSite: 'Strict'
     });
-    res.redirect(process.env.URL + '/update-password');
+    res.redirect(process.env.URL + '/updatepassword');
   } catch (e) {
     res.json({ error: e.toString() });
   }

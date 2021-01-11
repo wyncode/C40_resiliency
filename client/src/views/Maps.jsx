@@ -6,26 +6,25 @@ import {
   GoogleMap,
   Marker
 } from 'react-google-maps';
-
 const CustomMap = withScriptjs(
   withGoogleMap((props) => (
     <GoogleMap
       defaultZoom={13}
-      defaultCenter={{ lat: 40.748817, lng: -73.985428 }}
+      defaultCenter={{ lat: 18.2208, lng: -66.5901 }}
       defaultOptions={{
         scrollwheel: false,
         zoomControl: true
       }}
     >
-      <Marker position={{ lat: 40.748817, lng: -73.985428 }} />
+      <Marker position={{ lat: 17.9725, lng: -66.9086 }} />
     </GoogleMap>
   ))
 );
-
+console.log(process.env.REACT_APP_GOOGLE_API);
 function Maps({ ...prop }) {
   return (
     <CustomMap
-      // googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU_6mN2n9O5ab8vpCGn_KyRGJYF5v5Idk"
+      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTb9eShaJX1AaYeu3zDV1Q320n1B_7AY&libraries=places"
       loadingElement={<div style={{ height: `100%` }} />}
       containerElement={<div style={{ height: `100vh` }} />}
       mapElement={<div style={{ height: `100%` }} />}

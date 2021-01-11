@@ -104,6 +104,9 @@ const userSchema = new mongoose.Schema(
     logo: {
       type: String
     },
+    photo: {
+      type: String
+    },
     latitude: {
       type: Number
     },
@@ -114,6 +117,9 @@ const userSchema = new mongoose.Schema(
       type: [String],
       required: true,
       enum: ['water', 'food', 'health services', "children's education"]
+    },
+    aidDesc: {
+      type: String
     }
   },
   {

@@ -31,7 +31,7 @@ const UserSignup = ({ history }) => {
         console.log(res.data);
         sessionStorage.setItem('user', res.data);
         setCurrentUser(res.data);
-        history.push('/');
+        history.push('/userhome');
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +40,7 @@ const UserSignup = ({ history }) => {
 
   return (
     <Grid className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <Form className="auth-wrapper">
+      <Form onSubmit={handleSignUp} className="auth-wrapper">
         <div className="auth-inner">
           <h3>User Registration</h3>
           <p>
@@ -49,19 +49,46 @@ const UserSignup = ({ history }) => {
           </p>
           <FormGroup>
             <p>Select one or more categories below...</p>
-            <Radio name="radioGroup">Water</Radio>{' '}
-            <Radio name="radioGroup">Food</Radio>{' '}
-            <Radio name="radioGroup">Health Services</Radio>{' '}
-            <Radio name="radioGroup">Childrens Education</Radio>
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="male"
+              name="aidType"
+              value="water"
+            />
+            <label for="male">Male</label>
+            <br />
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="female"
+              name="aidType"
+              value="food"
+            />
+            <label for="female">Female</label>
+            <br />
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="other"
+              name="aidType"
+              value="health services"
+            />
+            <label for="other">Other</label>
           </FormGroup>
           <FormGroup>
             <FormGroup controlId="formControlsTextarea">
               <ControlLabel>Briefly describe your need:</ControlLabel>
-              <FormControl componentClass="textarea" placeholder="200 words" />
+              <FormControl
+                name="aidDesc"
+                componentClass="textarea"
+                placeholder="200 words"
+                onChange={handleChange}
+              />
             </FormGroup>
             <div className="form-group">
               <label>File</label>
-              <input type="file" />
+              <input name="photo" type="file" onChange={handleChange} />
               You may upload a photo to accompany your request.
             </div>
             <Home />
@@ -69,6 +96,7 @@ const UserSignup = ({ history }) => {
               <label>First Name</label>
               <input
                 type="text"
+                name="firstName"
                 className="form-control"
                 placeholder="First Name"
                 onChange={handleChange}
@@ -78,23 +106,33 @@ const UserSignup = ({ history }) => {
             <div className="form-group">
               <label>Last Name</label>
               <input
+                name="lastName"
                 type="text"
                 className="form-control"
                 placeholder="Last Name"
+                onChange={handleChange}
               />
             </div>
 
             <div className="form-group">
               <label>Date of Birth (you must be 18+)</label>
-              <input type="date" className="form-control" placeholder="dob" />
+              <input
+                name="dob"
+                type="date"
+                className="form-control"
+                placeholder="dob"
+                onChange={handleChange}
+              />
             </div>
 
             <div className="form-group">
               <label>Email address</label>
               <input
                 type="email"
+                name="email"
                 className="form-control"
                 placeholder="Enter email"
+                onChange={handleChange}
               />
             </div>
 
@@ -102,17 +140,21 @@ const UserSignup = ({ history }) => {
               <label>Phone Number</label>
               <input
                 type="text"
+                name="phone"
                 className="form-control"
                 placeholder="Phone Number"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <label>Address</label>
               <input
                 type="text"
+                name="address"
                 className="form-control"
                 placeholder="Your org's street address"
                 defaultValue={userAddress?.split(',')[0]}
+                onChange={handleChange}
               />
             </div>
 
@@ -123,6 +165,8 @@ const UserSignup = ({ history }) => {
                 className="form-control"
                 placeholder="City"
                 defaultValue={userAddress?.split(',')[1]}
+                name="city"
+                onChange={handleChange}
               />
             </div>
 
@@ -133,6 +177,8 @@ const UserSignup = ({ history }) => {
                 className="form-control"
                 placeholder="State"
                 defaultValue={userAddress?.split(',')[3]}
+                name="state"
+                onChange={handleChange}
               />
             </div>
 
@@ -140,9 +186,11 @@ const UserSignup = ({ history }) => {
               <label>Zip Code</label>
               <input
                 type="text"
+                name="zip"
                 className="form-control"
                 placeholder="Zip Code"
                 defaultValue={userAddress?.split(',')[2]}
+                onChange={handleChange}
               />
             </div>
 
@@ -150,9 +198,11 @@ const UserSignup = ({ history }) => {
               <label>Password</label>
               <input
                 type="password"
+                name="password"
                 className="form-control"
                 placeholder="Enter password"
                 help="Password must be 8 characters"
+                onChange={handleChange}
               />
             </div>
           </FormGroup>
