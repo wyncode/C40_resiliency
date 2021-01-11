@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/tablelist" component={TableList} />
           <Route exact path="/ngoprofile" component={NGOProfile} />
           <div>
-            <Route exact path="/pleasework" component={Home2} />
+            <Route exact path="/maphome2" component={Home2} />
           </div>
         </Switch>
       </BrowserRouter>

@@ -31,38 +31,32 @@ const dashboardRoutes = [
     layout: '/admin'
   },
   {
-    path: '/user',
+    path: './views/NGOProfile.jsx',
     name: 'User Profile',
     icon: 'pe-7s-user',
-    component: UserProfile,
+    component: NGOProfile,
     layout: '/admin'
   },
   {
-    path: '/table',
-    name: 'Table List',
+    path: './views/TableList.jsx',
+    name: 'Request Table',
     icon: 'pe-7s-note2',
     component: TableList,
     layout: '/admin'
   },
+
   {
-    path: '/typography',
-    name: 'Typography',
-    icon: 'pe-7s-news-paper',
-    component: Typography,
-    layout: '/admin'
-  },
-  {
-    path: '/icons',
-    name: 'Icons',
-    icon: 'pe-7s-science',
-    component: Icons,
-    layout: '/admin'
-  },
-  {
-    path: '/maps',
+    path: './views/Map/Home2.js',
     name: 'Maps',
     icon: 'pe-7s-map-marker',
     component: Maps,
+    layout: '/admin'
+  },
+  {
+    path: './views/Twilio.jsx',
+    name: 'Twilio',
+    icon: 'pe-7s-science',
+    component: Twilio,
     layout: '/admin'
   }
 ];
