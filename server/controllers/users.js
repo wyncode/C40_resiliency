@@ -41,7 +41,8 @@ exports.createUser = async (req, res) => {
     address,
     city,
     state,
-    zip
+    zip,
+    admin
   } = req.body;
   try {
     const user = new User({
@@ -57,7 +58,8 @@ exports.createUser = async (req, res) => {
       address,
       city,
       state,
-      zip
+      zip,
+      admin
     });
     const token = await user.generateAuthToken();
     // sendWelcomeEmail(user.email, user.firstName);
@@ -67,6 +69,7 @@ exports.createUser = async (req, res) => {
       secure: process.env.NODE_ENV !== 'production' ? false : true
     });
     user.save();
+    console.log(user);
     res.status(201).json(user);
   } catch (e) {
     res.status(400).json({ error: e.toString() });

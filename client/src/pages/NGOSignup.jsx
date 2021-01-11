@@ -1,12 +1,5 @@
 import React, { useState, useContext } from 'react';
-import {
-  Grid,
-  Form,
-  FormGroup,
-  Checkbox,
-  FieldGroup,
-  Button
-} from 'react-bootstrap';
+import { Grid, Form, FormGroup, Checkbox } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
@@ -23,15 +16,15 @@ const NPSignup = ({ history }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    formData.admin = true;
+    // formData.admin = true;
     console.log(formData);
     axios
-      .post('/api/users', formData)
+      .post('/api/users/', formData)
       .then((res) => {
         console.log(res.data);
         sessionStorage.setItem('user', res.data);
         setCurrentUser(res.data);
-        history.push('/');
+        history.push('/login');
       })
       .catch((error) => {
         console.log(error);
@@ -49,6 +42,7 @@ const NPSignup = ({ history }) => {
               <label>Organization Name</label>
               <input
                 type="text"
+                name="orgName"
                 className="form-control"
                 placeholder="Which organization do you represent?"
                 onChange={handleChange}
@@ -56,7 +50,7 @@ const NPSignup = ({ history }) => {
             </div>
             <div className="form-group">
               <label>File</label>
-              <input type="file" />
+              <input type="file" name="photo" />
               Upload organization logo here.
             </div>
 
@@ -64,6 +58,7 @@ const NPSignup = ({ history }) => {
               <label>First Name</label>
               <input
                 type="text"
+                name="firstName"
                 className="form-control"
                 placeholder="First Name"
                 onChange={handleChange}
@@ -74,6 +69,7 @@ const NPSignup = ({ history }) => {
               <label>Last Name</label>
               <input
                 type="text"
+                name="lastName"
                 className="form-control"
                 placeholder="Last Name"
               />
@@ -83,6 +79,7 @@ const NPSignup = ({ history }) => {
               <label>Title/Position</label>
               <input
                 type="text"
+                name="positionTitle"
                 className="form-control"
                 placeholder="What is your position or title?"
               />
@@ -90,13 +87,19 @@ const NPSignup = ({ history }) => {
 
             <div className="form-group">
               <label>Date of Birth (you must be 18+)</label>
-              <input type="date" className="form-control" placeholder="dob" />
+              <input
+                type="date"
+                name="dob"
+                className="form-control"
+                placeholder="dob"
+              />
             </div>
 
             <div className="form-group">
               <label>Email address</label>
               <input
                 type="email"
+                name="email"
                 className="form-control"
                 placeholder="Enter email"
               />
@@ -106,6 +109,7 @@ const NPSignup = ({ history }) => {
               <label>Phone Number</label>
               <input
                 type="text"
+                name="phone"
                 className="form-control"
                 placeholder="Phone Number"
               />
@@ -114,6 +118,7 @@ const NPSignup = ({ history }) => {
               <label>Address</label>
               <input
                 type="text"
+                name="address"
                 className="form-control"
                 placeholder="Your org's street address"
               />
@@ -121,18 +126,29 @@ const NPSignup = ({ history }) => {
 
             <div className="form-group">
               <label>City</label>
-              <input type="text" className="form-control" placeholder="City" />
+              <input
+                type="text"
+                name="city"
+                className="form-control"
+                placeholder="City"
+              />
             </div>
 
             <div className="form-group">
               <label>State</label>
-              <input type="text" className="form-control" placeholder="State" />
+              <input
+                type="text"
+                name="state"
+                className="form-control"
+                placeholder="State"
+              />
             </div>
 
             <div className="form-group">
               <label>Zip Code</label>
               <input
                 type="text"
+                name="zip"
                 className="form-control"
                 placeholder="Zip Code"
               />
@@ -142,6 +158,7 @@ const NPSignup = ({ history }) => {
               <label>Password</label>
               <input
                 type="password"
+                name="password"
                 className="form-control"
                 placeholder="Enter password"
                 help="Password must be 8 characters"
@@ -171,4 +188,5 @@ const NPSignup = ({ history }) => {
     </Grid>
   );
 };
+
 export default NPSignup;

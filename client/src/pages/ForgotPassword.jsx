@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 import swal from 'sweetalert';
+import '../assets/css/forms.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
