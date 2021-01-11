@@ -32,6 +32,8 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react": "^17.0.1",
+    "react-geocode": "^0.2.2",
+    "react-google-autocomplete": "^1.2.6",
     "react-router-dom": "5.0.0",
     "set-cookie-parser": "^2.4.6",
     "sweetalert": "^2.1.2",

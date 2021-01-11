@@ -7,7 +7,6 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import '../assets/css/forms.css';
@@ -27,7 +26,12 @@ const Login = ({ history }) => {
       const response = await axios.post('/api/users/login', formData);
       setCurrentUser(response.data);
       sessionStorage.setItem('user', response.data);
-      history.push('/');
+      history.push('/userhome');
+      // if (user === admin) {
+      //   history.push('/dashboard');
+      // } else {
+      //   history.push('/userhome');
+      // }
     } catch (error) {
       console.log(error);
     }

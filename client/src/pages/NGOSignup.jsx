@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { Grid, Form, FormGroup, Checkbox } from 'react-bootstrap';
+import { Grid, Form, FormGroup, Checkbox, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import axios from 'axios';
 import '../assets/css/forms.css';
 
 const NPSignup = ({ history }) => {
@@ -187,12 +186,7 @@ const NPSignup = ({ history }) => {
             </Checkbox>
           </FormGroup>
 
-          <Button
-            type="submit"
-            // onClick={handleSignUp}
-            className="btn btn-primary btn-block"
-            // to="/login"
-          >
+          <Button type="submit" className="btn btn-primary btn-block">
             Register
           </Button>
           <p className="forgot-password">

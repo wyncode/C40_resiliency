@@ -48,33 +48,43 @@ const UserSignup = ({ history }) => {
             services:
           </p>
           <FormGroup>
-            <p>Select one or more categories below...</p>
+            <p>Select a category below...</p>
             <input
               onChange={handleChange}
               type="radio"
-              id="male"
+              id="water"
               name="aidType"
               value="water"
             />
-            <label for="male">Male</label>
+            <label for="water">Water</label>
             <br />
             <input
               onChange={handleChange}
               type="radio"
-              id="female"
+              id="food"
               name="aidType"
               value="food"
             />
-            <label for="female">Female</label>
+            <label for="food">Food</label>
             <br />
             <input
               onChange={handleChange}
               type="radio"
-              id="other"
+              id="education"
               name="aidType"
-              value="health services"
+              value="education"
             />
-            <label for="other">Other</label>
+            <label for="education">Childrens Education</label>
+            <br />
+            <input
+              onChange={handleChange}
+              type="radio"
+              id="health"
+              name="aidType"
+              value="health"
+            />
+            <label for="health">Health</label>
+            <br />
           </FormGroup>
           <FormGroup>
             <FormGroup controlId="formControlsTextarea">
