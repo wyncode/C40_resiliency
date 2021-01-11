@@ -15,6 +15,9 @@ app.use(morgan('dev'));
 
 // Unauthenticated routes
 app.use('/api/users', openRoutes);
+app.get('/GoogleAPI', (req, res) => {
+  res.json(process.env.GOOGLE_API_KEY);
+});
 
 app.use(cookieParser());
 

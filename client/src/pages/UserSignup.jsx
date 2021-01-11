@@ -10,12 +10,13 @@ import {
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import Home from '../views/Map/Home';
 import '../assets/css/forms.css';
 
 const UserSignup = ({ history }) => {
   const [formData, setFormData] = useState('');
 
-  const { setCurrentUser } = useContext(AppContext);
+  const { setCurrentUser, userAddress } = useContext(AppContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -63,7 +64,7 @@ const UserSignup = ({ history }) => {
               <input type="file" />
               You may upload a photo to accompany your request.
             </div>
-
+            <Home />
             <div className="form-group">
               <label>First Name</label>
               <input
@@ -111,17 +112,28 @@ const UserSignup = ({ history }) => {
                 type="text"
                 className="form-control"
                 placeholder="Your org's street address"
+                defaultValue={userAddress?.split(',')[0]}
               />
             </div>
 
             <div className="form-group">
               <label>City</label>
-              <input type="text" className="form-control" placeholder="City" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="City"
+                defaultValue={userAddress?.split(',')[1]}
+              />
             </div>
 
             <div className="form-group">
               <label>State</label>
-              <input type="text" className="form-control" placeholder="State" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="State"
+                defaultValue={userAddress?.split(',')[3]}
+              />
             </div>
 
             <div className="form-group">
@@ -130,6 +142,7 @@ const UserSignup = ({ history }) => {
                 type="text"
                 className="form-control"
                 placeholder="Zip Code"
+                defaultValue={userAddress?.split(',')[2]}
               />
             </div>
 
