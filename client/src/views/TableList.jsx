@@ -36,7 +36,6 @@ const TableList = () => {
   }, []);
   return (
     <>
-      <AdminNavbar />
       <Sidebar routes={routes} />
       <div className="content">
         <Grid fluid>
