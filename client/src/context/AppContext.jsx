@@ -4,6 +4,7 @@ import axios from 'axios';
 const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
+  const [userAddress, setUserAddress] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [requests, setRequests] = useState([]);
   const [filteredRequests, setFilteredRequests] = useState([]);
@@ -50,7 +51,9 @@ const AppContextProvider = ({ children }) => {
         search,
         setSearch,
         currentFilter,
-        setCurrentFilter
+        setCurrentFilter,
+        userAddress,
+        setUserAddress
       }}
     >
       {children}

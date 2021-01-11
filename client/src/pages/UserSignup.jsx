@@ -10,12 +10,13 @@ import {
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import Home from '../views/Map/Home';
 import '../assets/css/forms.css';
 
 const UserSignup = ({ history }) => {
   const [formData, setFormData] = useState('');
 
-  const { setCurrentUser } = useContext(AppContext);
+  const { setCurrentUser, userAddress } = useContext(AppContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,7 +48,7 @@ const UserSignup = ({ history }) => {
             services:
           </p>
           <FormGroup>
-            <p>Select one or more categories below...</p>
+            <p>Select a category below...</p>
             <input
               onChange={handleChange}
               type="radio"
@@ -71,7 +72,7 @@ const UserSignup = ({ history }) => {
               type="radio"
               id="education"
               name="aidType"
-              value="health services"
+              value="education"
             />
             <label for="education">Childrens Education</label>
             <br />
@@ -99,7 +100,7 @@ const UserSignup = ({ history }) => {
               <input name="photo" type="file" onChange={handleChange} />
               You may upload a photo to accompany your request.
             </div>
-
+            <Home />
             <div className="form-group">
               <label>First Name</label>
               <input
@@ -161,6 +162,7 @@ const UserSignup = ({ history }) => {
                 name="address"
                 className="form-control"
                 placeholder="Your org's street address"
+                defaultValue={userAddress?.split(',')[0]}
                 onChange={handleChange}
               />
             </div>
@@ -169,9 +171,10 @@ const UserSignup = ({ history }) => {
               <label>City</label>
               <input
                 type="text"
-                name="city"
                 className="form-control"
                 placeholder="City"
+                defaultValue={userAddress?.split(',')[1]}
+                name="city"
                 onChange={handleChange}
               />
             </div>
@@ -180,9 +183,10 @@ const UserSignup = ({ history }) => {
               <label>State</label>
               <input
                 type="text"
-                name="state"
                 className="form-control"
                 placeholder="State"
+                defaultValue={userAddress?.split(',')[3]}
+                name="state"
                 onChange={handleChange}
               />
             </div>
@@ -194,6 +198,7 @@ const UserSignup = ({ history }) => {
                 name="zip"
                 className="form-control"
                 placeholder="Zip Code"
+                defaultValue={userAddress?.split(',')[2]}
                 onChange={handleChange}
               />
             </div>
