@@ -44,16 +44,10 @@ class Sidebar extends Component {
         </div>
         <div className="side">
           <div>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/userhome">Home</Link>
           </div>
           <div>
             <Link to="/profile">Profile</Link>
-          </div>
-          <div>
-            <Link to="/tablelist">Request Table</Link>
-          </div>
-          <div>
-            <Link to="/home2">Map</Link>
           </div>
           <div>
             <Link to="/twilio">Messaging</Link>

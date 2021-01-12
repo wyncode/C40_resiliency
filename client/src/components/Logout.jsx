@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
-import history from '../history';
 
 const Logout = () => {
   const { setCurrentUser } = useContext(AppContext);

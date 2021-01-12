@@ -1,196 +1,131 @@
-/*!
-
-=========================================================
-* Light Bootstrap Dashboard React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React, { Component } from 'react';
-import {
-  Grid,
-  Row,
-  Col,
-  FormGroup,
-  ControlLabel,
-  FormControl
-} from 'react-bootstrap';
-
-import { Card } from '../components/Card/Card.jsx';
-import { FormInputs } from '../components/FormInputs/FormInputs.jsx';
-import { UserCard } from '../components/UserCard/UserCard.jsx';
-import Button from '../components/CustomButton/CustomButton.jsx';
+import React, { useContext, useState } from 'react';
+import { Grid, Image, Button } from 'react-bootstrap';
+import wyncode from '../assets/img/tim_80x80.png';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import swal from 'sweetalert';
 import Sidebar from '../components/Sidebar/Sidebar';
-import AdminNavbar from '../components/Navbars/AdminNavbar';
-// import Footer from '../components/Footer/Footer';
 import routes from '../routes';
-import avatar from '../assets/img/faces/face-3.jpg';
 
-class UserProfile extends Component {
-  render() {
-    return (
-      <>
-        <AdminNavbar />
-        <Sidebar routes={routes} />
-        <div className="content">
-          <Grid fluid>
-            <Row>
-              <Col md={8}>
-                <Card
-                  title="Edit Profile"
-                  content={
-                    <form>
-                      <FormInputs
-                        ncols={['col-md-5', 'col-md-3', 'col-md-4']}
-                        properties={[
-                          {
-                            label: 'Company (disabled)',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'Company',
-                            defaultValue: 'Creative Code Inc.',
-                            disabled: true
-                          },
-                          {
-                            label: 'Username',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'Username',
-                            defaultValue: 'michael23'
-                          },
-                          {
-                            label: 'Email address',
-                            type: 'email',
-                            bsClass: 'form-control',
-                            placeholder: 'Email'
-                          }
-                        ]}
-                      />
-                      <FormInputs
-                        ncols={['col-md-6', 'col-md-6']}
-                        properties={[
-                          {
-                            label: 'First name',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'First name',
-                            defaultValue: 'Mike'
-                          },
-                          {
-                            label: 'Last name',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'Last name',
-                            defaultValue: 'Andrew'
-                          }
-                        ]}
-                      />
-                      <FormInputs
-                        ncols={['col-md-12']}
-                        properties={[
-                          {
-                            label: 'Adress',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'Home Adress',
-                            defaultValue:
-                              'Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09'
-                          }
-                        ]}
-                      />
-                      <FormInputs
-                        ncols={['col-md-4', 'col-md-4', 'col-md-4']}
-                        properties={[
-                          {
-                            label: 'City',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'City',
-                            defaultValue: 'Mike'
-                          },
-                          {
-                            label: 'Country',
-                            type: 'text',
-                            bsClass: 'form-control',
-                            placeholder: 'Country',
-                            defaultValue: 'Andrew'
-                          },
-                          {
-                            label: 'Postal Code',
-                            type: 'number',
-                            bsClass: 'form-control',
-                            placeholder: 'ZIP Code'
-                          }
-                        ]}
-                      />
+const NGOProfile = ({ history: { push } }) => {
+  const { currentUser, setCurrentUser, setLoading } = useContext(AppContext);
 
-                      <Row>
-                        <Col md={12}>
-                          <FormGroup controlId="formControlsTextarea">
-                            <ControlLabel>About Me</ControlLabel>
-                            <FormControl
-                              rows="5"
-                              componentClass="textarea"
-                              bsClass="form-control"
-                              placeholder="Here can be your description"
-                              defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                            />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Button bsStyle="info" pullRight fill type="submit">
-                        Update Profile
-                      </Button>
-                      <div className="clearfix" />
-                    </form>
-                  }
-                />
-              </Col>
-              <Col md={4}>
-                <UserCard
-                  bgImage="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-                  avatar={avatar}
-                  name="Mike Andrew"
-                  userName="michael24"
-                  description={
-                    <span>
-                      "Lamborghini Mercy
-                      <br />
-                      Your chick she so thirsty
-                      <br />
-                      I'm in that two seat Lambo"
-                    </span>
-                  }
-                  socials={
-                    <div>
-                      <Button simple>
-                        <i className="fa fa-facebook-square" />
-                      </Button>
-                      <Button simple>
-                        <i className="fa fa-twitter" />
-                      </Button>
-                      <Button simple>
-                        <i className="fa fa-google-plus-square" />
-                      </Button>
-                    </div>
-                  }
-                />
-              </Col>
-            </Row>
-          </Grid>
-        </div>
-      </>
-    );
-  }
-}
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
 
-export default UserProfile;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const avatar = new FormData();
+    avatar.append('avatar', image, image.name);
+
+    try {
+      const updatedUser = await axios({
+        method: 'POST',
+        url: '/api/users/avatar',
+        data: avatar,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      setCurrentUser({ ...currentUser, avatar: updatedUser.data.secureURL });
+      swal('Sweet!', 'Your image has been updated!', 'success');
+    } catch (error) {
+      swal('Oops', 'Something went wrong.');
+    }
+  };
+
+  const handleImageSelect = (e) => {
+    setPreview(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
+  };
+
+  const handleDelete = async (e) => {
+    setLoading(true);
+    try {
+      const willDelete = await swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, you will not be able to recover this account!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true
+      });
+      if (willDelete) {
+        try {
+          await axios({
+            method: 'DELETE',
+            url: '/api/users',
+            withCredentials: true
+          });
+          swal('Poof!', 'Your account has been deleted.', { icon: 'success' });
+          setLoading(false);
+          sessionStorage.removeItem('user');
+          setCurrentUser(null);
+          push('/login');
+        } catch (error) {
+          swal('Oops!', 'Something went wrong.');
+        }
+      } else {
+        swal('Your account is safe!');
+      }
+    } catch (error) {
+      swal('Oops!', 'Something went wrong.');
+    }
+  };
+
+  return (
+    <>
+      <Sidebar routes={routes} />
+      <div className="content">
+        <Grid className="d-flex justify-content-center align-items-center flex-column">
+          <h1 className="mt-4">Your Profile</h1>
+          <div className="mt-4">
+            <Image
+              src={
+                preview
+                  ? preview
+                  : currentUser?.avatar
+                  ? currentUser.avatar
+                  : wyncode
+              }
+              alt="profile-picture"
+              width={250}
+              height={250}
+              roundedCircle
+            />
+          </div>
+          <div className="mt-4">
+            <form className="d-flex flex-column" onSubmit={handleSubmit}>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageSelect}
+              />
+              <Button type="submit" size="sm" className="mt-4">
+                Save Image
+              </Button>
+            </form>
+          </div>
+          <div className="d-flex flex-column align-items-center justify-content-center mt-4">
+            <div className="d-flex ">
+              <label htmlFor="name" className="pr-4 font-weight-bold">
+                Name:
+              </label>
+              <p>{currentUser?.name}</p>
+            </div>
+            <div className="d-flex">
+              <label htmlFor="email" className="pr-4 font-weight-bold">
+                Email:
+              </label>
+              <p>{currentUser?.email}</p>
+            </div>
+            <Button variant="danger" onClick={handleDelete}>
+              Delete Account
+            </Button>
+          </div>
+        </Grid>
+      </div>
+    </>
+  );
+};
+
+export default NGOProfile;

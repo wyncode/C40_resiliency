@@ -29,8 +29,6 @@ import NGONav from '../components/NGONav';
 const Dashboard = ({ history }) => {
   return (
     <>
-      <NGONav />
-
       <Grid fluid style={{ marginLeft: '40rem' }}>
         <Row>
           <Col lg={3} sm={6}>
@@ -73,11 +71,9 @@ const Dashboard = ({ history }) => {
         <Row>
           <Col md={6}>
             <Card
-              statsIcon="fa fa-history"
               id="googleMap"
               title="Request Map"
               category="Displays Request by Location"
-              stats="Updated 3 minutes ago"
               content={<Home2 />}
             />
           </Col>
@@ -89,14 +85,13 @@ const Dashboard = ({ history }) => {
           id="twillio"
           title="Twillio"
           category="In App Messaging"
-          stats="Updated 3 minutes ago"
           content={<Twillio />}
         />
       </Col>
     </Row>{' '} */}
         <Row>
           <Col md={12}>
-            <Card statsIcon="fa fa-clock-o" content={<Table />} />{' '}
+            <Card content={<Table />} />{' '}
           </Col>
         </Row>
       </Grid>

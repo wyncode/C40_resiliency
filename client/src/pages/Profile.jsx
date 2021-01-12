@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Grid, Image, Button } from 'react-bootstrap';
 import wyncode from '../assets/img/tim_80x80.png';
-import Navigation from '../components/UserNavigation';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
-import history from '../history';
+import Sidebar from '../components/Sidebar/UserSidebar';
+import routes from '../routes';
 
 const Profile = ({ history: { push } }) => {
   const { currentUser, setCurrentUser, setLoading } = useContext(AppContext);
@@ -74,50 +74,56 @@ const Profile = ({ history: { push } }) => {
 
   return (
     <>
-      <Navigation />
-      <Grid className="d-flex justify-content-center align-items-center flex-column">
-        <h1 className="mt-4">Your Profile</h1>
-        <div className="mt-4">
-          <Image
-            src={
-              preview
-                ? preview
-                : currentUser?.avatar
-                ? currentUser.avatar
-                : wyncode
-            }
-            alt="profile-picture"
-            width={250}
-            height={250}
-            roundedCircle
-          />
-        </div>
-        <div className="mt-4">
-          <form className="d-flex flex-column" onSubmit={handleSubmit}>
-            <input type="file" accept="image/*" onChange={handleImageSelect} />
-            <Button type="submit" size="sm" className="mt-4">
-              Save Image
+      <Sidebar routes={routes} />
+      <div className="content">
+        <Grid className="d-flex justify-content-center align-items-center flex-column">
+          <h1 className="mt-4">Your Profile</h1>
+          <div className="mt-4">
+            <Image
+              src={
+                preview
+                  ? preview
+                  : currentUser?.avatar
+                  ? currentUser.avatar
+                  : wyncode
+              }
+              alt="profile-picture"
+              width={250}
+              height={250}
+              roundedCircle
+            />
+          </div>
+          <div className="mt-4">
+            <form className="d-flex flex-column" onSubmit={handleSubmit}>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageSelect}
+              />
+              <Button type="submit" size="sm" className="mt-4">
+                Save Image
+              </Button>
+            </form>
+          </div>
+          <div className="d-flex flex-column align-items-center justify-content-center mt-4">
+            <div className="d-flex ">
+              <label htmlFor="name" className="pr-4 font-weight-bold">
+                Name:
+              </label>
+              <p>{currentUser?.name}</p>
+            </div>
+            <div className="d-flex">
+              <label htmlFor="email" className="pr-4 font-weight-bold">
+                Email:
+              </label>
+              <p>{currentUser?.email}</p>
+            </div>
+            <Button variant="danger" onClick={handleDelete}>
+              Delete Account
             </Button>
-          </form>
-        </div>
-        <div className="d-flex flex-column align-items-center justify-content-center mt-4">
-          <div className="d-flex ">
-            <label htmlFor="name" className="pr-4 font-weight-bold">
-              Name:
-            </label>
-            <p>{currentUser?.name}</p>
           </div>
-          <div className="d-flex">
-            <label htmlFor="email" className="pr-4 font-weight-bold">
-              Email:
-            </label>
-            <p>{currentUser?.email}</p>
-          </div>
-          <Button variant="danger" onClick={handleDelete}>
-            Delete Account
-          </Button>
-        </div>
-      </Grid>
+        </Grid>
+      </div>
     </>
   );
 };
