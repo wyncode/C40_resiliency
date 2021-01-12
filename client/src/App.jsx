@@ -35,9 +35,6 @@ function App() {
           <Route exact path="/maps" component={Maps} />
           <Route exact path="/tablelist" component={TableList} />
           <Route exact path="/ngoprofile" component={NGOProfile} />
-          <div>
-            <Route exact path="/pleasework" component={Home2} />
-          </div>
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

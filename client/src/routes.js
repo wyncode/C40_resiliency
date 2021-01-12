@@ -28,43 +28,24 @@ const dashboardRoutes = [
     name: 'Dashboard',
     icon: 'pe-7s-graph',
     component: Dashboard,
-    layout: '/admin'
+    layout: ''
   },
+
   {
-    path: '/user',
-    name: 'User Profile',
-    icon: 'pe-7s-user',
-    component: UserProfile,
-    layout: '/admin'
-  },
-  {
-    path: '/table',
+    path: '/dashboard',
     name: 'Table List',
     icon: 'pe-7s-note2',
     component: TableList,
-    layout: '/admin'
-  },
-  {
-    path: '/typography',
-    name: 'Typography',
-    icon: 'pe-7s-news-paper',
-    component: Typography,
-    layout: '/admin'
-  },
-  {
-    path: '/icons',
-    name: 'Icons',
-    icon: 'pe-7s-science',
-    component: Icons,
-    layout: '/admin'
-  },
-  {
-    path: '/maps',
-    name: 'Maps',
-    icon: 'pe-7s-map-marker',
-    component: Maps,
-    layout: '/admin'
+    layout: ''
   }
+
+  // {
+  //   path: '/maps',
+  //   name: 'Maps',
+  //   icon: 'pe-7s-map-marker',
+  //   component: Maps,
+  //   layout: ''
+  // }
 ];
 
 export default dashboardRoutes;

@@ -42,8 +42,8 @@ const TableList = () => {
           <Row>
             <Col md={12}>
               <Card
-                title="Striped Table with Hover"
-                category="Here is a subtitle for this table"
+                title="Island Wide Assistance Requests"
+                category="Who will you help today?"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
@@ -74,8 +74,8 @@ const TableList = () => {
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
                             <td>{user.address}</td>
-                            <td>{user.state}</td>
                             <td>{user.city}</td>
+                            <td>{user.state}</td>
                             <td>{user.zip}</td>
                             <td>{user.photo}</td>
                           </tr>
