@@ -1,11 +1,13 @@
 import React from 'react';
-import AppBar from '../components/UserNavigation';
+import UserNavigation from '../components/UserNavigation';
 import Twilio from '../views/Twilio';
+import AdminNavbar from '../components/Navbars/AdminNavbar';
 
 const UserHome = () => {
   return (
     <div>
-      <AppBar />
+      {/* <AppBar /> */}
+      <UserNavigation />
       {/* integrate Twilio here */}
       {/* include link to profile */}
       <Twilio />

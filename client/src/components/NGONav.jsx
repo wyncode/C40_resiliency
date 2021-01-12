@@ -4,7 +4,7 @@ import Logout from './Logout';
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/res_logo.png';
 
-const UserNavigation = () => {
+const NGONav = () => {
   return (
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -56,4 +56,4 @@ const UserNavigation = () => {
   );
 };
 
-export default UserNavigation;
+export default NGONav;
