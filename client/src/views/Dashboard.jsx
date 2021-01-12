@@ -21,19 +21,14 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { Card } from '../components/Card/Card';
 import { StatsCard } from '../components/StatsCard/StatsCard.jsx';
 // import { style } from '../variables/Variables.jsx';
-import Maps from './Maps';
 import Table from './TableList';
 import Home2 from '../views/Map/Home2';
-import Sidebar from '../components/Sidebar/Sidebar';
 import AdminNavbar from '../components/Navbars/AdminNavbar';
-// import Footer from '../components/Footer/Footer';
-import routes from '../routes';
+import NGONav from '../components/NGONav';
 
 const Dashboard = ({ history }) => {
   return (
     <>
-      <AdminNavbar />
-      <Sidebar routes={routes} />
       <Grid fluid style={{ marginLeft: '40rem' }}>
         <Row>
           <Col lg={3} sm={6}>
@@ -76,11 +71,9 @@ const Dashboard = ({ history }) => {
         <Row>
           <Col md={6}>
             <Card
-              statsIcon="fa fa-history"
               id="googleMap"
               title="Request Map"
               category="Displays Request by Location"
-              stats="Updated 3 minutes ago"
               content={<Home2 />}
             />
           </Col>
@@ -92,20 +85,13 @@ const Dashboard = ({ history }) => {
           id="twillio"
           title="Twillio"
           category="In App Messaging"
-          stats="Updated 3 minutes ago"
           content={<Twillio />}
         />
       </Col>
     </Row>{' '} */}
         <Row>
           <Col md={12}>
-            <Card
-              statsIcon="fa fa-clock-o"
-              title="Assistance Requests"
-              category="Displays All Requests for Assistance"
-              stats="Campaign sent 2 days ago"
-              content={<Table />}
-            />{' '}
+            <Card content={<Table />} />{' '}
           </Col>
         </Row>
       </Grid>

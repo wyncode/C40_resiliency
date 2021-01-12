@@ -17,6 +17,7 @@
 */
 import React, { Component } from 'react';
 import { NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class AdminNavbarLinks extends Component {
   render() {
@@ -30,33 +31,14 @@ class AdminNavbarLinks extends Component {
     );
     return (
       <div>
-        <Nav>
-          <NavItem eventKey={1} href="#">
-            <i className="fa fa-dashboard" />
-            <p className="hidden-lg hidden-md">Dashboard</p>
-          </NavItem>
-          <NavDropdown
-            eventKey={2}
-            title={notification}
-            noCaret
-            id="basic-nav-dropdown"
-          >
-            <MenuItem eventKey={2.1}>Notification 1</MenuItem>
-            <MenuItem eventKey={2.2}>Notification 2</MenuItem>
-            <MenuItem eventKey={2.3}>Notification 3</MenuItem>
-            <MenuItem eventKey={2.4}>Notification 4</MenuItem>
-            <MenuItem eventKey={2.5}>Another notifications</MenuItem>
-          </NavDropdown>
-          <NavItem eventKey={3} href="#">
-            <i className="fa fa-search" />
-            <p className="hidden-lg hidden-md">Search</p>
-          </NavItem>
-        </Nav>
+        {' '}
         <Nav pullRight>
-          <NavItem eventKey={1} href="#">
-            Account
+          <NavItem eventKey={1}>
+            <Link eventKey={2} to="/logout">
+              Profile
+            </Link>
           </NavItem>
-          <NavDropdown
+          {/* <NavDropdown
             eventKey={2}
             title="Dropdown"
             id="basic-nav-dropdown-right"
@@ -68,10 +50,10 @@ class AdminNavbarLinks extends Component {
             <MenuItem eventKey={2.5}>Something</MenuItem>
             <MenuItem divider />
             <MenuItem eventKey={2.5}>Separated link</MenuItem>
-          </NavDropdown>
-          <NavItem eventKey={3} href="#">
-            Log out
-          </NavItem>
+          </NavDropdown> */}
+          <Link eventKey={3} to="/logout">
+            Log Out
+          </Link>
         </Nav>
       </div>
     );

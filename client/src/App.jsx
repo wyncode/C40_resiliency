@@ -15,8 +15,6 @@ import Profile from './pages/Profile';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import Home2 from './views/Map/Home';
-import Sidebar from './components/Sidebar/Sidebar';
-import AdminNavbar from './components/Navbars/AdminNavbar';
 
 function App() {
   return (
