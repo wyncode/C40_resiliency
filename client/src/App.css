@@ -80,3 +80,50 @@ forgot-password {
 forgot-password {
   color: #167bff;
 }
+
+.homeContainer {
+  padding: 50px;
+}
+
+.homeTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  /* flex-wrap: wrap; */
+}
+
+.banner {
+  margin-left: 50px;
+  height: 300px;
+  width: 250px;
+}
+.logo {
+  height: 700px;
+}
+
+.homeButton {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  width: 150px;
+}
+
+.q1 {
+  margin-top: 20px;
+}
+
+.q2 {
+  margin-top: 20px;
+}
+
+.carouselDiv {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel {
+  height: 400px;
+}
