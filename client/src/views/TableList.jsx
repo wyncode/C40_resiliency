@@ -1,25 +1,7 @@
-/*!
-
-=========================================================
-* Light Bootstrap Dashboard React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { Component, useEffect, useState } from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
-import Sidebar from '../components/Sidebar/Sidebar';
-import AdminNavbar from '../components/Navbars/AdminNavbar';
-// import Footer from '../components/Footer/Footer';
+import NGOSidebar from '../components/Sidebar/Sidebar';
+
 import routes from '../routes';
 import Card from '../components/Card/Card.jsx';
 import { thArray, tdArray } from '../variables/Variables.jsx';
@@ -36,7 +18,7 @@ const TableList = () => {
   }, []);
   return (
     <>
-      <Sidebar routes={routes} />
+      <NGOSidebar routes={routes} />
       <div className="content">
         <Grid fluid>
           <Row>

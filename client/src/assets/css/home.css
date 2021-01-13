@@ -1,0 +1,58 @@
+.grid {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+.jumbotron {
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.jumbo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  width: 50%;
+  align-items: right;
+  padding: 10vw;
+}
+
+.logo {
+  display: flex;
+  align-items: right;
+}
+
+.jumbocopycontainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 10vw;
+}
+
+.jumbocopy {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.homeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.q1 {
+  padding-bottom: 8px;
+}
+
+.jumbo2 {
+  display: flex;
+}
+.card-container {
+  display: flex;
+  flex-direction: row;
+}

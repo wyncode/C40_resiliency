@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../../assets/img/crlogo.svg';
 import { Link } from 'react-router-dom';
-import '../../assets/css/sidebar.css';
+import '../../assets/css/sidebar1.css';
 
 class Sidebar extends Component {
   constructor(props) {

@@ -109,7 +109,11 @@ const UserSignup = ({ history }) => {
               <input name="photo" type="file" onChange={handleChange} />
               You may upload a photo to accompany your request.
             </div>
-            <Home />
+            <div className="map-container">
+              <div className="map">
+                <Home />
+              </div>
+            </div>
             <div className="form-group">
               <label>First Name</label>
               <input

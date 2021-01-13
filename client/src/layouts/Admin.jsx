@@ -21,13 +21,10 @@ import NotificationSystem from 'react-notification-system';
 
 import AdminNavbar from '../components/Navbars/AdminNavbar';
 import Footer from '../components/Footer/Footer';
-import Sidebar from '../components/Sidebar/Sidebar';
 
 import * as VariablesJsx from '../variables/Variables.jsx';
 
 import routes from '../routes';
-
-import image from '../assets/img/sidebar-3.jpg';
 
 class Admin extends Component {
   constructor(props) {
@@ -110,13 +107,7 @@ class Admin extends Component {
           ref="notificationSystem"
           style={VariablesJsx.style}
         />
-        <Sidebar
-          {...this.props}
-          routes={routes}
-          image={this.state.image}
-          color={this.state.color}
-          hasImage={this.state.hasImage}
-        />
+
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <AdminNavbar
             {...this.props}

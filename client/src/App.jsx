@@ -1,8 +1,7 @@
-import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import UserHome from './pages/UserHome';
-import Dashboard from './views/Dashboard';
+import Dashboard2 from './views/Dashboard';
 import Maps from './views/Maps';
 import TableList from './views/TableList';
 import NGOProfile from './views/NGOProfile';
@@ -24,7 +23,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/usersignup" component={UserSignup} />
           <Route exact path="/ngosignup" component={NGOSignup} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard2" component={Dashboard2} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/updatepassword" component={UpdatePassword} />

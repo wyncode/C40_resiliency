@@ -1,0 +1,19 @@
+/* .sidebar-container {
+  color: #1a3230;
+  font-weight: 400;
+} */
+
+.sidebarlinks-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.snavlinks {
+  color: white;
+  z-index: -10;
+}

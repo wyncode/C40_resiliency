@@ -1,16 +1,16 @@
 import React from 'react';
-// import { Switch } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Card } from '../components/Card/Card';
 import { StatsCard } from '../components/StatsCard/StatsCard.jsx';
 // import { style } from '../variables/Variables.jsx';
 import Table from './TableList';
-import Home2 from '../views/Map/Home2';
-// import NGOSidebar from '../components/Sidebar/NGOSidebar';
+import Home2 from './Map/Home2';
+import NGOSidebar from '../components/Sidebar/NGOSidebar';
 
 function Dashboard() {
   return (
     <>
+      <NGOSidebar />
       <Grid fluid style={{ marginLeft: '30rem', marginTop: '5rem' }}>
         <Row>
           <Col lg={3} sm={6}>

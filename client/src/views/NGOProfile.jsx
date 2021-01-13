@@ -4,7 +4,7 @@ import wyncode from '../assets/img/tim_80x80.png';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
-import Sidebar from '../components/Sidebar/Sidebar';
+import NGOSidebar from '../components/Sidebar/Sidebar';
 import routes from '../routes';
 
 const NGOProfile = ({ history: { push } }) => {
@@ -74,7 +74,7 @@ const NGOProfile = ({ history: { push } }) => {
 
   return (
     <>
-      <Sidebar routes={routes} />
+      <NGOSidebar routes={routes} />
       <div className="content">
         <Grid className="d-flex justify-content-center align-items-center flex-column">
           <h1 className="mt-4">Your Profile</h1>
