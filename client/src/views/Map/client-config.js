@@ -1,1 +1,1 @@
-export const GoogleMapsAPI = 'AIzaSyDfTb9eShaJX1AaYeu3zDV1Q32OnlB_7AY';
+export const GoogleMapsAPI = 'Google_API_Key';

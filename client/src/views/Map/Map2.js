@@ -305,7 +305,7 @@ class Map extends Component {
           <div></div>
 
           <AsyncMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GoogleMapsAPI}&libraries=places`}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GoogleMaps_API}&libraries=places`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: this.props.height }} />}
             mapElement={<div style={{ height: `100%`, width: '100%' }} />}

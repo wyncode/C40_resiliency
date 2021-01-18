@@ -24,7 +24,7 @@ console.log(process.env.REACT_APP_GOOGLE_API);
 function Maps({ ...prop }) {
   return (
     <CustomMap
-      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTb9eShaJX1AaYeu3zDV1Q320n1B_7AY&libraries=places"
+      googleMapURL="https://maps.googleapis.com/maps/api/js?key=Google_API_Key&libraries=places"
       loadingElement={<div style={{ height: `100%` }} />}
       containerElement={<div style={{ height: `100vh` }} />}
       mapElement={<div style={{ height: `100%` }} />}
